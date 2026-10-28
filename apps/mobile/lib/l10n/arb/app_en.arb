@@ -1,0 +1,56 @@
+{
+  "@@locale": "en",
+
+  "welcomeBack": "Welcome back",
+  "signInSubtitle": "Sign in to book a ride, order food, or send a parcel.",
+  "phoneNumberLabel": "Phone number",
+  "passwordLabel": "Password",
+  "enterPhoneNumber": "Enter your phone number",
+  "enterPassword": "Enter your password",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "signIn": "Sign in",
+  "newHere": "New here?",
+  "createAnAccount": "Create an account",
+
+  "createAccount": "Create account",
+  "firstNameLabel": "First name",
+  "lastNameOptionalLabel": "Last name (optional)",
+  "enterFirstName": "Enter your first name",
+  "emailOptionalLabel": "Email (optional)",
+  "useAtLeast8Characters": "Use at least 8 characters",
+  "genderOptionalLabel": "Gender (optional)",
+  "genderHelp": "Only used for shared-ride safety preferences such as women-only rides.",
+  "genderFemale": "Female",
+  "genderMale": "Male",
+  "genderOther": "Other",
+  "genderPreferNotToSay": "Prefer not to say",
+
+  "helloGeneric": "Hello",
+  "helloWithName": "Hello, {name}",
+  "@helloWithName": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "notifications": "Notifications",
+  "whereTo": "Where to?",
+  "happeningNow": "Happening now",
+  "serviceRide": "Ride",
+  "serviceShareSave": "Share & save",
+  "serviceFood": "Food",
+  "serviceParcel": "Parcel",
+  "sharedBadge": "Shared",
+
+  "navHome": "Home",
+  "navActivity": "Activity",
+  "navAccount": "Account",
+  "navDriving": "Driving",
+  "navRequests": "Requests",
+  "navDeliver": "Deliver",
+  "navEarnings": "Earnings",
+
+  "languageLabel": "Language",
+  "languageSystem": "System default",
+  "languageEnglish": "English",
+  "languageTamil": "Tamil",
+  "languageSinhala": "Sinhala"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Tugo mark: a white circle and a white pill, matching TugoMark
+     (lib/core/theme/brand_mark.dart), centered in the adaptive icon's 66dp
+     safe zone of the 108dp canvas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,54 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M63,46 L77,46 A8,8 0 0 1 85,54 A8,8 0 0 1 77,62 L63,62 A8,8 0 0 1 55,54 A8,8 0 0 1 63,46 Z" />
+</vector>

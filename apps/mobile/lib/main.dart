@@ -6,5 +6,5 @@ import 'app.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const ProviderScope(child: RideFlowApp()));
+  runApp(const ProviderScope(child: TugoApp()));
 }

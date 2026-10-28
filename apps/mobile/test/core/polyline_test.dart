@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/core/maps/polyline.dart';
-import 'package:rideflow_mobile/models/common.dart';
+import 'package:tugo_mobile/core/maps/polyline.dart';
+import 'package:tugo_mobile/models/common.dart';
 
 void main() {
   group('decodePolyline', () {

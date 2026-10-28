@@ -131,7 +131,7 @@ class _MapViewState extends State<MapView> {
         TileLayer(
           urlTemplate: widget.tileUrlTemplate,
           // Required by the tile provider's usage policy.
-          userAgentPackageName: 'lk.rideflow.mobile',
+          userAgentPackageName: 'lk.tugo.mobile',
           maxNativeZoom: 19,
         ),
         if (route.length > 1)

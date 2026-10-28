@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // `Override` is not in flutter_riverpod's show-list in 3.x; it lives here.
 import 'package:riverpod/misc.dart' show Override;
-import 'package:rideflow_mobile/core/config/app_config.dart';
-import 'package:rideflow_mobile/core/networking/api_client.dart';
-import 'package:rideflow_mobile/core/providers.dart';
-import 'package:rideflow_mobile/core/storage/token_store.dart';
+import 'package:tugo_mobile/core/config/app_config.dart';
+import 'package:tugo_mobile/core/networking/api_client.dart';
+import 'package:tugo_mobile/core/providers.dart';
+import 'package:tugo_mobile/core/storage/token_store.dart';
 
 import 'fake_http.dart';
 

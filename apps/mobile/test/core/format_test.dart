@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/core/format/format.dart' as fmt;
-import 'package:rideflow_mobile/core/format/labels.dart';
+import 'package:tugo_mobile/core/format/format.dart' as fmt;
+import 'package:tugo_mobile/core/format/labels.dart';
 
 void main() {
   group('money', () {

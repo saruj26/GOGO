@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/core/errors/api_exception.dart';
-import 'package:rideflow_mobile/core/providers.dart';
-import 'package:rideflow_mobile/features/driver/driver_providers.dart';
-import 'package:rideflow_mobile/models/common.dart';
+import 'package:tugo_mobile/core/errors/api_exception.dart';
+import 'package:tugo_mobile/core/providers.dart';
+import 'package:tugo_mobile/features/driver/driver_providers.dart';
+import 'package:tugo_mobile/models/common.dart';
 
 import '../support/fake_http.dart';
 import '../support/fixtures.dart';

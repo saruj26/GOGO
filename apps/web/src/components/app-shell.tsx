@@ -55,7 +55,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="px-5 py-5">
           <Link href="/" className="inline-flex items-center gap-2">
             <Logo />
-            <span className="text-lg font-semibold tracking-tight text-ink-900">RideFlow</span>
+            <span className="text-lg font-semibold tracking-tight text-ink-900">Tugo</span>
           </Link>
         </div>
 
@@ -104,7 +104,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <header className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-ink-200 bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
           <Link href="/" className="inline-flex items-center gap-2">
             <Logo />
-            <span className="font-semibold tracking-tight text-ink-900">RideFlow</span>
+            <span className="font-semibold tracking-tight text-ink-900">Tugo</span>
           </Link>
           <NotificationBell />
         </header>

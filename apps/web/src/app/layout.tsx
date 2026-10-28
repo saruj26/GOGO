@@ -6,9 +6,9 @@ import './globals.css';
 import { AppProviders } from './providers';
 
 export const metadata: Metadata = {
-  title: { default: 'RideFlow', template: '%s · RideFlow' },
-  description: 'Rides, shared rides, food and parcels across the north.',
-  applicationName: 'RideFlow',
+  title: { default: 'Tugo', template: '%s · Tugo' },
+  description: 'Your ride, your way — rides, shared rides, food and parcels across Sri Lanka.',
+  applicationName: 'Tugo',
 };
 
 export const viewport: Viewport = {
@@ -16,7 +16,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   // Never block pinch-zoom; some people need it to read.
   maximumScale: 5,
-  themeColor: '#0f5c63',
+  themeColor: '#007F86',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

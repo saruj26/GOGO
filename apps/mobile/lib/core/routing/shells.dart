@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/driver/driver_providers.dart';
 import '../../features/notifications/notifications_screen.dart';
+import '../../l10n/app_localizations.dart';
 
 /// The customer's bottom navigation.
 class CustomerShell extends StatelessWidget {
@@ -13,6 +14,8 @@ class CustomerShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       body: shell,
       bottomNavigationBar: NavigationBar(
@@ -23,31 +26,31 @@ class CustomerShell extends StatelessWidget {
           index,
           initialLocation: index == shell.currentIndex,
         ),
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home_rounded),
-            label: 'Home',
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home_rounded),
+            label: l10n.navHome,
           ),
           NavigationDestination(
-            icon: Icon(Icons.directions_car_outlined),
-            selectedIcon: Icon(Icons.directions_car_rounded),
-            label: 'Ride',
+            icon: const Icon(Icons.directions_car_outlined),
+            selectedIcon: const Icon(Icons.directions_car_rounded),
+            label: l10n.serviceRide,
           ),
           NavigationDestination(
-            icon: Icon(Icons.restaurant_outlined),
-            selectedIcon: Icon(Icons.restaurant_rounded),
-            label: 'Food',
+            icon: const Icon(Icons.restaurant_outlined),
+            selectedIcon: const Icon(Icons.restaurant_rounded),
+            label: l10n.serviceFood,
           ),
           NavigationDestination(
-            icon: Icon(Icons.receipt_long_outlined),
-            selectedIcon: Icon(Icons.receipt_long_rounded),
-            label: 'Activity',
+            icon: const Icon(Icons.receipt_long_outlined),
+            selectedIcon: const Icon(Icons.receipt_long_rounded),
+            label: l10n.navActivity,
           ),
           NavigationDestination(
-            icon: Icon(Icons.person_outline_rounded),
-            selectedIcon: Icon(Icons.person_rounded),
-            label: 'Account',
+            icon: const Icon(Icons.person_outline_rounded),
+            selectedIcon: const Icon(Icons.person_rounded),
+            label: l10n.navAccount,
           ),
         ],
       ),
@@ -67,6 +70,7 @@ class DriverShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final unread = ref.watch(unreadCountProvider).value ?? 0;
 
     // Position reporting lives for as long as the driver shell does, and
@@ -82,10 +86,10 @@ class DriverShell extends ConsumerWidget {
           initialLocation: index == shell.currentIndex,
         ),
         destinations: [
-          const NavigationDestination(
-            icon: Icon(Icons.dashboard_outlined),
-            selectedIcon: Icon(Icons.dashboard_rounded),
-            label: 'Driving',
+          NavigationDestination(
+            icon: const Icon(Icons.dashboard_outlined),
+            selectedIcon: const Icon(Icons.dashboard_rounded),
+            label: l10n.navDriving,
           ),
           NavigationDestination(
             icon: Badge(
@@ -94,22 +98,22 @@ class DriverShell extends ConsumerWidget {
               child: const Icon(Icons.notifications_none_rounded),
             ),
             selectedIcon: const Icon(Icons.notifications_active_rounded),
-            label: 'Requests',
+            label: l10n.navRequests,
           ),
-          const NavigationDestination(
-            icon: Icon(Icons.navigation_outlined),
-            selectedIcon: Icon(Icons.navigation_rounded),
-            label: 'Ride',
+          NavigationDestination(
+            icon: const Icon(Icons.navigation_outlined),
+            selectedIcon: const Icon(Icons.navigation_rounded),
+            label: l10n.serviceRide,
           ),
-          const NavigationDestination(
-            icon: Icon(Icons.delivery_dining_outlined),
-            selectedIcon: Icon(Icons.delivery_dining_rounded),
-            label: 'Deliver',
+          NavigationDestination(
+            icon: const Icon(Icons.delivery_dining_outlined),
+            selectedIcon: const Icon(Icons.delivery_dining_rounded),
+            label: l10n.navDeliver,
           ),
-          const NavigationDestination(
-            icon: Icon(Icons.payments_outlined),
-            selectedIcon: Icon(Icons.payments_rounded),
-            label: 'Earnings',
+          NavigationDestination(
+            icon: const Icon(Icons.payments_outlined),
+            selectedIcon: const Icon(Icons.payments_rounded),
+            label: l10n.navEarnings,
           ),
         ],
       ),

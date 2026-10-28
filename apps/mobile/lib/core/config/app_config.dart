@@ -48,7 +48,7 @@ class AppConfig {
       ),
       supportEmail: const String.fromEnvironment(
         'SUPPORT_EMAIL',
-        defaultValue: 'support@rideflow.lk',
+        defaultValue: 'support@tugo.lk',
       ),
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 30),

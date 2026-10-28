@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/auth/auth_controller.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/theme/brand_mark.dart';
 import '../../core/widgets/forms.dart';
+import '../../l10n/app_localizations.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});
@@ -29,12 +31,13 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   }
 
   Future<void> _submit() async {
+    final l10n = AppLocalizations.of(context);
     final phone = _phone.text.trim();
     final password = _password.text;
 
     setState(() {
-      _phoneError = phone.isEmpty ? 'Enter your phone number' : null;
-      _passwordError = password.isEmpty ? 'Enter your password' : null;
+      _phoneError = phone.isEmpty ? l10n.enterPhoneNumber : null;
+      _passwordError = password.isEmpty ? l10n.enterPassword : null;
     });
 
     if (_phoneError != null || _passwordError != null) return;
@@ -48,6 +51,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   Widget build(BuildContext context) {
     final auth = ref.watch(authControllerProvider);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -67,12 +71,12 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Icon(Icons.alt_route_rounded, size: 44, color: theme.colorScheme.primary),
-                    Gap.lg,
-                    Text('Welcome back', style: theme.textTheme.headlineSmall),
+                    Center(child: TugoWordmark(size: 40, color: theme.colorScheme.primary)),
+                    Gap.xl,
+                    Text(l10n.welcomeBack, style: theme.textTheme.headlineSmall),
                     Gap.xs,
                     Text(
-                      'Sign in to book a ride, order food, or send a parcel.',
+                      l10n.signInSubtitle,
                       style: theme.textTheme.bodyMedium
                           ?.copyWith(color: theme.colorScheme.outline),
                     ),
@@ -82,7 +86,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       Gap.lg,
                     ],
                     AppField(
-                      label: 'Phone number',
+                      label: l10n.phoneNumberLabel,
                       controller: _phone,
                       hint: '+94 7X XXX XXXX',
                       keyboardType: TextInputType.phone,
@@ -93,7 +97,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     ),
                     Gap.lg,
                     AppField(
-                      label: 'Password',
+                      label: l10n.passwordLabel,
                       controller: _password,
                       obscureText: _obscure,
                       textInputAction: TextInputAction.done,
@@ -104,23 +108,23 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       suffix: IconButton(
                         onPressed: () => setState(() => _obscure = !_obscure),
                         icon: Icon(_obscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
-                        tooltip: _obscure ? 'Show password' : 'Hide password',
+                        tooltip: _obscure ? l10n.showPassword : l10n.hidePassword,
                       ),
                     ),
                     Gap.xl,
-                    BusyButton(label: 'Sign in', busy: _busy, onPressed: _submit),
+                    BusyButton(label: l10n.signIn, busy: _busy, onPressed: _submit),
                     Gap.lg,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'New here?',
+                          l10n.newHere,
                           style: theme.textTheme.bodyMedium
                               ?.copyWith(color: theme.colorScheme.outline),
                         ),
                         TextButton(
                           onPressed: () => context.push('/register'),
-                          child: const Text('Create an account'),
+                          child: Text(l10n.createAnAccount),
                         ),
                       ],
                     ),

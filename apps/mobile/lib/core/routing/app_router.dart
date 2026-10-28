@@ -29,6 +29,7 @@ import '../../features/profile/saved_places_screen.dart';
 import '../../features/promotions/promotions_screen.dart';
 import '../../features/rides/booking_screen.dart';
 import '../../features/rides/booking_controller.dart';
+import '../../features/splash/splash_screen.dart';
 import '../../features/support/support_screen.dart';
 import '../../features/support/tickets_screen.dart';
 import '../../features/tracking/ride_tracking_screen.dart';
@@ -80,9 +81,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: '/starting',
-        builder: (context, state) => const Scaffold(
-          body: LoadingState(message: 'Loading your account…'),
-        ),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(path: '/sign-in', builder: (context, state) => const SignInScreen()),
       GoRoute(path: '/register', builder: (context, state) => const RegisterScreen()),

@@ -56,7 +56,7 @@ async function bootstrap(): Promise<void> {
 
   if (!isProduction) {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('RideFlow Platform API')
+      .setTitle('Tugo Platform API')
       .setDescription(
         'Ride hailing, route-aware dynamic shared rides, food delivery and parcel delivery.',
       )

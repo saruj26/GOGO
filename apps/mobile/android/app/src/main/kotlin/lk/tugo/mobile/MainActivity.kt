@@ -1,4 +1,4 @@
-package lk.rideflow.rideflow_mobile
+package lk.tugo.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

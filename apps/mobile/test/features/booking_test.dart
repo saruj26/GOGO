@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/features/rides/booking_controller.dart';
-import 'package:rideflow_mobile/models/auth.dart';
-import 'package:rideflow_mobile/models/common.dart';
+import 'package:tugo_mobile/features/rides/booking_controller.dart';
+import 'package:tugo_mobile/models/auth.dart';
+import 'package:tugo_mobile/models/common.dart';
 
 import '../support/fake_http.dart';
 import '../support/fixtures.dart';
-import 'package:rideflow_mobile/core/providers.dart';
+import 'package:tugo_mobile/core/providers.dart';
 
 import '../support/harness.dart';
 

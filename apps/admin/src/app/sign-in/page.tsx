@@ -59,7 +59,7 @@ export default function AdminSignInPage() {
             <circle cx="21" cy="21" r="2.5" fill="white" />
           </svg>
           <div>
-            <p className="font-semibold tracking-tight text-ink-900">RideFlow</p>
+            <p className="font-semibold tracking-tight text-ink-900">Tugo</p>
             <p className="text-[11px] font-medium uppercase tracking-wider text-brand-700">Admin</p>
           </div>
         </div>

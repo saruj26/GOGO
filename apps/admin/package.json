@@ -2,7 +2,7 @@
   "name": "@rideflow/admin",
   "version": "0.1.0",
   "private": true,
-  "description": "RideFlow admin application",
+  "description": "Tugo admin application",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",

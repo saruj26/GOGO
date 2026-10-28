@@ -1,0 +1,56 @@
+{
+  "@@locale": "ta",
+
+  "welcomeBack": "மீண்டும் வரவேற்கிறோம்",
+  "signInSubtitle": "சவாரி பதிவு செய்ய, உணவு ஆர்டர் செய்ய அல்லது பார்சல் அனுப்ப உள்நுழையவும்.",
+  "phoneNumberLabel": "தொலைபேசி எண்",
+  "passwordLabel": "கடவுச்சொல்",
+  "enterPhoneNumber": "உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்",
+  "enterPassword": "உங்கள் கடவுச்சொல்லை உள்ளிடவும்",
+  "showPassword": "கடவுச்சொல்லைக் காட்டு",
+  "hidePassword": "கடவுச்சொல்லை மறை",
+  "signIn": "உள்நுழைக",
+  "newHere": "புதியவரா?",
+  "createAnAccount": "கணக்கை உருவாக்கவும்",
+
+  "createAccount": "கணக்கை உருவாக்கு",
+  "firstNameLabel": "முதல் பெயர்",
+  "lastNameOptionalLabel": "கடைசி பெயர் (விருப்பத்தேர்வு)",
+  "enterFirstName": "உங்கள் முதல் பெயரை உள்ளிடவும்",
+  "emailOptionalLabel": "மின்னஞ்சல் (விருப்பத்தேர்வு)",
+  "useAtLeast8Characters": "குறைந்தது 8 எழுத்துக்களைப் பயன்படுத்தவும்",
+  "genderOptionalLabel": "பாலினம் (விருப்பத்தேர்வு)",
+  "genderHelp": "பகிரப்பட்ட சவாரி பாதுகாப்பு விருப்பங்களுக்கு மட்டுமே பயன்படுத்தப்படுகிறது, எடுத்துக்காட்டாக பெண்களுக்கு மட்டுமான சவாரிகள்.",
+  "genderFemale": "பெண்",
+  "genderMale": "ஆண்",
+  "genderOther": "மற்றவை",
+  "genderPreferNotToSay": "சொல்ல விரும்பவில்லை",
+
+  "helloGeneric": "வணக்கம்",
+  "helloWithName": "வணக்கம், {name}",
+  "@helloWithName": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "notifications": "அறிவிப்புகள்",
+  "whereTo": "எங்கே செல்ல வேண்டும்?",
+  "happeningNow": "இப்போது நடக்கிறது",
+  "serviceRide": "சவாரி",
+  "serviceShareSave": "பகிர்ந்து சேமிக்க",
+  "serviceFood": "உணவு",
+  "serviceParcel": "பார்சல்",
+  "sharedBadge": "பகிரப்பட்டது",
+
+  "navHome": "முகப்பு",
+  "navActivity": "செயல்பாடு",
+  "navAccount": "கணக்கு",
+  "navDriving": "ஓட்டுதல்",
+  "navRequests": "கோரிக்கைகள்",
+  "navDeliver": "விநியோகி",
+  "navEarnings": "வருமானம்",
+
+  "languageLabel": "மொழி",
+  "languageSystem": "சாதன மொழி",
+  "languageEnglish": "ஆங்கிலம்",
+  "languageTamil": "தமிழ்",
+  "languageSinhala": "சிங்களம்"
+}

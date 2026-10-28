@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/core/auth/auth_controller.dart';
-import 'package:rideflow_mobile/core/auth/auth_state.dart';
-import 'package:rideflow_mobile/core/providers.dart';
-import 'package:rideflow_mobile/core/storage/token_store.dart';
+import 'package:tugo_mobile/core/auth/auth_controller.dart';
+import 'package:tugo_mobile/core/auth/auth_state.dart';
+import 'package:tugo_mobile/core/providers.dart';
+import 'package:tugo_mobile/core/storage/token_store.dart';
 
 import '../support/fake_http.dart';
 import '../support/fixtures.dart';

@@ -9,6 +9,7 @@ import '../../core/maps/map_view.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/status_badge.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/common.dart';
 import '../../models/ride.dart';
 import '../rides/booking_controller.dart';
@@ -37,8 +38,9 @@ class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   Future<void> _chooseDestination(BuildContext context, WidgetRef ref) async {
+    final title = AppLocalizations.of(context).whereTo;
     final place = await Navigator.of(context).push<Place>(
-      MaterialPageRoute(builder: (_) => const LocationSearchScreen(title: 'Where to?')),
+      MaterialPageRoute(builder: (_) => LocationSearchScreen(title: title)),
     );
 
     if (place == null || !context.mounted) return;
@@ -54,6 +56,7 @@ class HomeScreen extends ConsumerWidget {
     final here = ref.watch(lastKnownLocationProvider).value;
     final active = ref.watch(activeRidesProvider);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -67,13 +70,13 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      user == null ? 'Hello' : 'Hello, ${user.firstName}',
+                      user == null ? l10n.helloGeneric : l10n.helloWithName(user.firstName),
                       style: theme.textTheme.headlineSmall,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   IconButton(
-                    tooltip: 'Notifications',
+                    tooltip: l10n.notifications,
                     onPressed: () => context.push('/notifications'),
                     icon: const Icon(Icons.notifications_none_rounded),
                   ),
@@ -124,7 +127,7 @@ class HomeScreen extends ConsumerWidget {
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Happening now', style: theme.textTheme.titleMedium),
+                          Text(l10n.happeningNow, style: theme.textTheme.titleMedium),
                           Gap.md,
                           for (final ride in rides) ...[
                             _ActiveRideTile(ride: ride),
@@ -182,11 +185,12 @@ class _WhereToButton extends StatelessWidget {
 class _ServiceGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const services = [
-      (Icons.directions_car_rounded, 'Ride', '/book', AppColors.brand),
-      (Icons.groups_rounded, 'Share & save', '/book?mode=shared', AppColors.shared),
-      (Icons.restaurant_rounded, 'Food', '/food', AppColors.warning),
-      (Icons.inventory_2_rounded, 'Parcel', '/parcel', AppColors.progress),
+    final l10n = AppLocalizations.of(context);
+    final services = [
+      (Icons.directions_car_rounded, l10n.serviceRide, '/book', AppColors.brand),
+      (Icons.groups_rounded, l10n.serviceShareSave, '/book?mode=shared', AppColors.shared),
+      (Icons.restaurant_rounded, l10n.serviceFood, '/food', AppColors.warning),
+      (Icons.inventory_2_rounded, l10n.serviceParcel, '/parcel', AppColors.progress),
     ];
 
     return LayoutBuilder(
@@ -266,6 +270,7 @@ class _ActiveRideTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Card(
       child: ListTile(
@@ -285,7 +290,7 @@ class _ActiveRideTile extends StatelessWidget {
             runSpacing: 4,
             children: [
               StatusBadge(status: ride.status, labels: rideStatusLabel, dense: true),
-              if (ride.isSharedJoin) const SharedBadge(label: 'Shared'),
+              if (ride.isSharedJoin) SharedBadge(label: l10n.sharedBadge),
             ],
           ),
         ),

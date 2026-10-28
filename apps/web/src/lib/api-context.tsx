@@ -31,7 +31,7 @@ export function ApiProvider({ children }: { children: ReactNode }) {
   const [{ api, client }] = useState<ApiContextValue>(() => {
     const httpClient = new ApiClient({
       baseUrl: BASE_URL,
-      tokens: browserTokenStore('rideflow.customer'),
+      tokens: browserTokenStore('tugo.customer'),
       onSessionExpired: () => {
         // Reached only once the refresh token has also failed.
         routerRef.current.replace('/sign-in?reason=expired');

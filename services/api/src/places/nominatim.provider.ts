@@ -91,7 +91,7 @@ export class NominatimGeocodingProvider {
         signal: controller.signal,
         headers: {
           // Nominatim's policy requires an identifying User-Agent.
-          'User-Agent': `RideFlowPlatform/1.0${this.contactEmail ? ` (${this.contactEmail})` : ''}`,
+          'User-Agent': `TugoPlatform/1.0${this.contactEmail ? ` (${this.contactEmail})` : ''}`,
           'Accept-Language': 'en',
         },
       });

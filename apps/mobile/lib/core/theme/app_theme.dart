@@ -6,16 +6,22 @@ import 'package:flutter/material.dart';
 /// hex value: shared rides are always [AppColors.shared], money is always
 /// neutral, and a destructive action is always [ColorScheme.error].
 class AppColors {
-  static const brand = Color(0xFF0F766E);
-  static const brandDark = Color(0xFF115E59);
+  /// Tugo brand palette. Every screen reads these — never a literal hex.
+  static const brand = Color(0xFF007F86);
+  static const brandDark = Color(0xFF00646A);
+  static const background = Color(0xFFFFFFFF);
+  static const secondaryBackground = Color(0xFFE6F5F3);
+  static const textPrimary = Color(0xFF17252A);
+  static const textSecondary = Color(0xFF64748B);
+  static const lightGray = Color(0xFFF5F7F8);
 
   /// Shared rides carry their own colour everywhere they appear, so a shared
   /// journey is never mistaken for a solo one at a glance.
   static const shared = Color(0xFF7C3AED);
 
-  static const success = Color(0xFF15803D);
+  static const success = Color(0xFF16834A);
   static const warning = Color(0xFFB45309);
-  static const danger = Color(0xFFB91C1C);
+  static const danger = Color(0xFFDC3545);
   static const progress = Color(0xFF1D4ED8);
 }
 
@@ -34,7 +40,7 @@ class AppTheme {
 
     return base.copyWith(
       scaffoldBackgroundColor: brightness == Brightness.light
-          ? const Color(0xFFF8FAFC)
+          ? AppColors.background
           : const Color(0xFF0B1120),
       appBarTheme: AppBarTheme(
         centerTitle: false,

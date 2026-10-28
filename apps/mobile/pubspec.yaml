@@ -1,5 +1,5 @@
-name: rideflow_mobile
-description: RideFlow mobile application for customers and drivers.
+name: tugo_mobile
+description: Tugo mobile application for customers and drivers.
 publish_to: none
 version: 0.1.0
 
@@ -9,6 +9,10 @@ environment:
 
 dependencies:
   flutter:
+    sdk: flutter
+
+  # English, Tamil and Sinhala — generated from lib/l10n/arb/*.arb.
+  flutter_localizations:
     sdk: flutter
 
   # State. Riverpod keeps state scoped to a feature's provider rather than in a
@@ -54,3 +58,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true

@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/auth/auth_controller.dart';
 import '../../core/format/format.dart' as fmt;
+import '../../core/l10n/locale_controller.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/states.dart';
+import '../../l10n/app_localizations.dart';
 import '../payments/wallet_providers.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -131,6 +133,25 @@ class ProfileScreen extends ConsumerWidget {
                     onTap: () => context.push('/notifications'),
                   ),
                   const Divider(height: 1),
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final l10n = AppLocalizations.of(context);
+                      final locale = ref.watch(localeControllerProvider);
+                      return ListTile(
+                        leading: const Icon(Icons.language_rounded),
+                        title: Text(l10n.languageLabel),
+                        subtitle: Text(switch (locale?.languageCode) {
+                          'ta' => l10n.languageTamil,
+                          'si' => l10n.languageSinhala,
+                          'en' => l10n.languageEnglish,
+                          _ => l10n.languageSystem,
+                        }),
+                        trailing: const Icon(Icons.chevron_right_rounded),
+                        onTap: () => _chooseLanguage(context, ref),
+                      );
+                    },
+                  ),
+                  const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.help_outline_rounded),
                     title: const Text('Help & support'),
@@ -191,6 +212,58 @@ class ProfileScreen extends ConsumerWidget {
     if (confirmed != true) return;
     await ref.read(authControllerProvider.notifier).signOut();
   }
+
+  Future<void> _chooseLanguage(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
+    final current = ref.read(localeControllerProvider);
+
+    final options = [
+      (null, l10n.languageSystem),
+      (const Locale('en'), l10n.languageEnglish),
+      (const Locale('ta'), l10n.languageTamil),
+      (const Locale('si'), l10n.languageSinhala),
+    ];
+
+    // `null` distinguishes "dialog dismissed without a choice" from an
+    // explicit pick of "System default", which also resolves to a null
+    // locale — so the picked option is wrapped rather than returned bare.
+    final picked = await showDialog<_LanguageChoice>(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(l10n.languageLabel),
+        children: [
+          RadioGroup<String>(
+            groupValue: current?.languageCode ?? '',
+            onChanged: (code) {
+              final match = options.firstWhere(
+                (o) => (o.$1?.languageCode ?? '') == code,
+              );
+              Navigator.pop(context, _LanguageChoice(match.$1));
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (final option in options)
+                  RadioListTile<String>(
+                    value: option.$1?.languageCode ?? '',
+                    title: Text(option.$2),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (picked == null || picked.locale == current) return;
+    await ref.read(localeControllerProvider.notifier).set(picked.locale);
+  }
+}
+
+class _LanguageChoice {
+  const _LanguageChoice(this.locale);
+
+  final Locale? locale;
 }
 
 class _Stat extends StatelessWidget {

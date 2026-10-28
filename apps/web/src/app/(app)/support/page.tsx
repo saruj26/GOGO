@@ -71,7 +71,7 @@ export default function SupportPage() {
               Call support
             </Button>
           </a>
-          <a href="mailto:support@rideflow.example" className="flex-1">
+          <a href="mailto:support@tugo.lk" className="flex-1">
             <Button variant="secondary" fullWidth>
               Email us
             </Button>

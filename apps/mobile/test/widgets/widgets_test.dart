@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rideflow_mobile/core/errors/api_exception.dart';
-import 'package:rideflow_mobile/core/format/labels.dart';
-import 'package:rideflow_mobile/core/theme/app_theme.dart';
-import 'package:rideflow_mobile/core/widgets/payment_picker.dart';
-import 'package:rideflow_mobile/core/widgets/states.dart';
-import 'package:rideflow_mobile/core/widgets/status_badge.dart';
-import 'package:rideflow_mobile/features/rides/widgets/vehicle_option_tile.dart';
-import 'package:rideflow_mobile/features/shared_rides/widgets/shared_offer_card.dart';
-import 'package:rideflow_mobile/models/ride.dart';
-import 'package:rideflow_mobile/models/shared_ride.dart';
+import 'package:tugo_mobile/core/errors/api_exception.dart';
+import 'package:tugo_mobile/core/format/labels.dart';
+import 'package:tugo_mobile/core/theme/app_theme.dart';
+import 'package:tugo_mobile/core/widgets/payment_picker.dart';
+import 'package:tugo_mobile/core/widgets/states.dart';
+import 'package:tugo_mobile/core/widgets/status_badge.dart';
+import 'package:tugo_mobile/features/rides/widgets/vehicle_option_tile.dart';
+import 'package:tugo_mobile/features/shared_rides/widgets/shared_offer_card.dart';
+import 'package:tugo_mobile/models/ride.dart';
+import 'package:tugo_mobile/models/shared_ride.dart';
 
 import '../support/fixtures.dart';
 

@@ -1,24 +1,25 @@
 @import 'tailwindcss';
 
 /*
- * RideFlow design tokens.
+ * Tugo design tokens.
  *
  * One palette, one type scale, one radius scale — declared here so a component
- * never invents a colour. The brand is original: a deep teal that reads as
- * transport without borrowing anyone's identity, warmed by amber for the shared
- * ride, which is the product's distinguishing idea and deserves its own colour.
+ * never invents a colour. The brand is Deep Teal #007F86 (brand-500), an
+ * original identity for a Sri Lankan transport app, warmed by amber for the
+ * shared ride, which is the product's distinguishing idea and deserves its
+ * own colour.
  */
 @theme {
-  --color-brand-50: oklch(0.97 0.02 190);
-  --color-brand-100: oklch(0.93 0.04 190);
-  --color-brand-200: oklch(0.87 0.07 190);
-  --color-brand-300: oklch(0.78 0.10 190);
-  --color-brand-400: oklch(0.68 0.12 191);
-  --color-brand-500: oklch(0.58 0.12 192);
-  --color-brand-600: oklch(0.48 0.11 193);
-  --color-brand-700: oklch(0.40 0.09 194);
-  --color-brand-800: oklch(0.32 0.07 195);
-  --color-brand-900: oklch(0.25 0.05 196);
+  --color-brand-50: oklch(0.958 0.016 201);
+  --color-brand-100: oklch(0.92 0.03 201);
+  --color-brand-200: oklch(0.86 0.05 201);
+  --color-brand-300: oklch(0.77 0.07 201);
+  --color-brand-400: oklch(0.66 0.085 201);
+  --color-brand-500: oklch(0.543 0.092 201.6); /* #007F86 */
+  --color-brand-600: oklch(0.46 0.09 202);
+  --color-brand-700: oklch(0.38 0.075 202);
+  --color-brand-800: oklch(0.30 0.06 202);
+  --color-brand-900: oklch(0.22 0.045 202);
 
   /* Shared rides — the feature that makes this platform different. */
   --color-share-50: oklch(0.97 0.03 75);
@@ -29,19 +30,21 @@
   --color-share-600: oklch(0.60 0.15 62);
   --color-share-700: oklch(0.48 0.12 60);
 
-  --color-ink-50: oklch(0.985 0.002 250);
-  --color-ink-100: oklch(0.96 0.003 250);
-  --color-ink-200: oklch(0.92 0.004 250);
-  --color-ink-300: oklch(0.85 0.006 250);
-  --color-ink-400: oklch(0.68 0.008 250);
-  --color-ink-500: oklch(0.55 0.010 250);
-  --color-ink-600: oklch(0.44 0.012 250);
-  --color-ink-700: oklch(0.34 0.012 250);
-  --color-ink-800: oklch(0.24 0.010 250);
-  --color-ink-900: oklch(0.16 0.008 250);
+  /* Ink (text/surface neutrals) carries the same hue as Tugo's Dark Charcoal
+     text colour (#17252A = ink-800, exactly) rather than a generic grey. */
+  --color-ink-50: oklch(0.975 0.003 229);
+  --color-ink-100: oklch(0.95 0.005 225);
+  --color-ink-200: oklch(0.91 0.008 223);
+  --color-ink-300: oklch(0.84 0.012 222);
+  --color-ink-400: oklch(0.66 0.016 222);
+  --color-ink-500: oklch(0.52 0.019 222);
+  --color-ink-600: oklch(0.42 0.020 222);
+  --color-ink-700: oklch(0.33 0.021 222);
+  --color-ink-800: oklch(0.254 0.021 222.2); /* #17252A */
+  --color-ink-900: oklch(0.18 0.018 222);
 
   --color-positive-50: oklch(0.96 0.03 155);
-  --color-positive-500: oklch(0.62 0.14 155);
+  --color-positive-500: oklch(0.538 0.128 154); /* #16834A */
   --color-positive-700: oklch(0.45 0.11 155);
 
   --color-caution-50: oklch(0.97 0.04 85);
@@ -49,7 +52,7 @@
   --color-caution-700: oklch(0.52 0.12 72);
 
   --color-critical-50: oklch(0.96 0.03 25);
-  --color-critical-500: oklch(0.60 0.19 25);
+  --color-critical-500: oklch(0.592 0.202 21.2); /* #DC3545 */
   --color-critical-700: oklch(0.47 0.17 25);
 
   --radius-card: 1rem;

@@ -7,7 +7,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <header className="px-5 pt-10 pb-6 sm:px-8">
         <Link href="/" className="inline-flex items-center gap-2 text-white">
           <Logo />
-          <span className="text-lg font-semibold tracking-tight">RideFlow</span>
+          <span className="text-lg font-semibold tracking-tight">Tugo</span>
         </Link>
         <p className="mt-3 max-w-md text-sm text-brand-100">
           Rides, shared rides, food and parcels — across the north.

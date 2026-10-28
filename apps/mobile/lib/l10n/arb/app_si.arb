@@ -1,0 +1,56 @@
+{
+  "@@locale": "si",
+
+  "welcomeBack": "ආයුබෝවන්, නැවත පිළිගනිමු",
+  "signInSubtitle": "රථයක් වෙන් කරගැනීමට, ආහාර ඇණවුම් කිරීමට හෝ පාර්සලයක් යැවීමට පුරන්න.",
+  "phoneNumberLabel": "දුරකථන අංකය",
+  "passwordLabel": "මුරපදය",
+  "enterPhoneNumber": "ඔබේ දුරකථන අංකය ඇතුළත් කරන්න",
+  "enterPassword": "ඔබේ මුරපදය ඇතුළත් කරන්න",
+  "showPassword": "මුරපදය පෙන්වන්න",
+  "hidePassword": "මුරපදය සඟවන්න",
+  "signIn": "පුරන්න",
+  "newHere": "අලුත්ද?",
+  "createAnAccount": "ගිණුමක් සාදන්න",
+
+  "createAccount": "ගිණුම සාදන්න",
+  "firstNameLabel": "මුල් නම",
+  "lastNameOptionalLabel": "අවසන් නම (විකල්පයි)",
+  "enterFirstName": "ඔබේ මුල් නම ඇතුළත් කරන්න",
+  "emailOptionalLabel": "විද්‍යුත් තැපෑල (විකල්පයි)",
+  "useAtLeast8Characters": "අවම වශයෙන් අක්ෂර 8ක් භාවිත කරන්න",
+  "genderOptionalLabel": "ස්ත්‍රී පුරුෂ භාවය (විකල්පයි)",
+  "genderHelp": "බෙදාගත් ගමන්වල ආරක්ෂිත අභිප්‍රේත සඳහා පමණක් භාවිතා වේ, උදා. කාන්තාවන්ට පමණක් වූ ගමන්.",
+  "genderFemale": "ගැහැණු",
+  "genderMale": "පිරිමි",
+  "genderOther": "වෙනත්",
+  "genderPreferNotToSay": "පැවසීමට අකමැතියි",
+
+  "helloGeneric": "ආයුබෝවන්",
+  "helloWithName": "ආයුබෝවන්, {name}",
+  "@helloWithName": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "notifications": "දැනුම්දීම්",
+  "whereTo": "කොහෙද යන්නේ?",
+  "happeningNow": "දැන් සිදුවෙමින්",
+  "serviceRide": "ගමන",
+  "serviceShareSave": "බෙදාගෙන ඉතිරි කරන්න",
+  "serviceFood": "ආහාර",
+  "serviceParcel": "පාර්සලය",
+  "sharedBadge": "බෙදාගත්",
+
+  "navHome": "මුල් පිටුව",
+  "navActivity": "ක්‍රියාකාරකම්",
+  "navAccount": "ගිණුම",
+  "navDriving": "රිය පැදවීම",
+  "navRequests": "ඉල්ලීම්",
+  "navDeliver": "බෙදාහරින්න",
+  "navEarnings": "ඉපයීම්",
+
+  "languageLabel": "භාෂාව",
+  "languageSystem": "උපාංග භාෂාව",
+  "languageEnglish": "ඉංග්‍රීසි",
+  "languageTamil": "දෙමළ",
+  "languageSinhala": "සිංහල"
+}

@@ -38,7 +38,7 @@ abstract class TokenStore {
 /// Tokens are never written to shared preferences or to a log line: an access
 /// token in logcat is a stolen session.
 class SecureTokenStore implements TokenStore {
-  SecureTokenStore({FlutterSecureStorage? storage, this.key = 'rideflow.session'})
+  SecureTokenStore({FlutterSecureStorage? storage, this.key = 'tugo.session'})
       // v11 already defaults to AES-GCM with RSA-OAEP key wrapping on Android,
       // so the secure default needs no options. The iOS accessibility class is
       // set explicitly: the session may survive a reboot, but only once the

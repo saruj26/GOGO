@@ -103,7 +103,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-2 px-5 py-4">
           <Logo />
           <div className="min-w-0">
-            <p className="text-sm font-semibold tracking-tight text-ink-900">RideFlow</p>
+            <p className="text-sm font-semibold tracking-tight text-ink-900">Tugo</p>
             <p className="text-[11px] font-medium uppercase tracking-wider text-brand-700">
               Admin
             </p>
@@ -123,7 +123,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           <div className="relative h-full w-64 overflow-y-auto bg-white shadow-xl">
             <div className="flex items-center gap-2 px-5 py-4">
               <Logo />
-              <p className="text-sm font-semibold text-ink-900">RideFlow Admin</p>
+              <p className="text-sm font-semibold text-ink-900">Tugo Admin</p>
             </div>
             {nav}
           </div>
