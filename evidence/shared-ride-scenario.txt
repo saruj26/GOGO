@@ -1,0 +1,53 @@
+SHARED RIDE SCENARIO — Jaffna → Kopay → Chavakachcheri → Nelliyady → Point Pedro
+Started 2026-09-07T09:22:32.478Z
+
+1. Authenticated one driver and three passengers
+  PASS  fare estimate returned for every vehicle class
+
+2. Solo fare estimates, Jaffna → Point Pedro:
+     Bike      37.1 km  64 min  solo LKR 1376.04  (no sharing)
+     Auto      37.1 km  64 min  solo LKR 1952.62  shared from LKR 1366.83 (save 585.79)
+     Car       37.1 km  64 min  solo LKR 2930.66  shared from LKR 2051.46 (save 879.20)
+     Mini Van  37.1 km  64 min  solo LKR 4097.29  shared from LKR 2868.10 (save 1229.19)
+  PASS  driver declared a planned journey along the corridor
+
+3. Driver Kumar declared: Jaffna → Kopay → Chavakachcheri → Nelliyady → Point Pedro
+     ride SJ-YUYZSN, 38.7 km, 66 min, 4 seats offered
+  PASS  passenger A was offered the journey — offers=1 
+  PASS  passenger A joined — {"ridePassengerId":"ec4ea7b1-f3bf-4d73-95f6-42571eabdaec","rideId":"e295cccd-3679-4a93-a1c1-0febd6d8561d","seats":1,"fare":"2162.08","currency":"LKR","estimatedPickupAt":"2026-09-07T09:23:12.847Z"}
+
+4. Passenger A (Bavan) Jaffna → Point Pedro joined: LKR 2162.08
+  PASS  passenger B was offered the ride — offers=1 reason=-
+
+5. Passenger B (Chandran) searched Kopay → Nelliyady:
+     offered ride SJ-YUYZSN with Kumar  walk 0 m to pickup, 0 m from drop-off
+     fare LKR 1254.83, saving LKR 489.03, match quality 92/100
+     co-passengers already aboard: 1, seats free: 3
+  PASS  the offer hides co-passenger identities
+  PASS  the offer hides gender data
+  PASS  passenger B joined the ride — {"ridePassengerId":"6a6596d6-f65c-4360-a42f-dc4be16c9c7f","rideId":"e295cccd-3679-4a93-a1c1-0febd6d8561d","seats":1,"fare":"1254.83","currency":"LKR","estimatedPickupAt":"2026-09-07T09:38:32.747Z"}
+6. Passenger B joined; charged LKR 1254.83
+  PASS  an off-corridor journey is NOT offered a shared ride — No drivers are currently travelling your route.
+
+7. Passenger D (Mannar → Point Pedro, far off route): no offer — "No drivers are currently travelling your route."
+  PASS  a journey against the driver’s direction is NOT offered — No drivers are currently travelling your route.
+8. Reverse direction (Nelliyady → Kopay): no offer — "No drivers are currently travelling your route."
+  PASS  a women-only passenger is NOT offered a ride carrying men — Rides on your route do not currently match your safety preferences.
+
+9. Passenger (women-only preference), Chavakachcheri → Point Pedro: no offer — "Rides on your route do not currently match your safety preferences."
+  PASS  the same passenger IS offered the same ride once the restriction is lifted — offers=1
+10. Same passenger, same journey, preference "any": offered — the safety rule was the only difference
+  PASS  trip started
+  PASS  trip completed and every passenger settled separately — {"rideId":"e295cccd-3679-4a93-a1c1-0febd6d8561d","status":"COMPLETED","passengersSettled":2,"driverNetTotal":"1056.26"}
+
+11. Driver settlement:
+     trips settled          11
+     gross                  LKR 27337.16
+     platform commission    LKR 20111.33
+     driver net             LKR 7625.83
+     of which from sharing  LKR 5281.30 (10 additional passenger)
+  PASS  the driver earned an uplift from the additional passengers
+  PASS  driver net differs from what passengers paid
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-07T09:24:51.853Z

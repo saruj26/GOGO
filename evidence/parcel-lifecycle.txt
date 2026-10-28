@@ -1,0 +1,64 @@
+PARCEL DELIVERY — end to end
+Started 2026-09-07T11:35:18.485Z
+
+1. Authenticated a sender and a courier
+  PASS  parcel classes are listed
+
+2. Parcel classes:
+     Documents        up to 2.00 kg, minimum vehicle BIKE
+     Small parcel     up to 10.00 kg, minimum vehicle BIKE
+     Medium parcel    up to 50.00 kg, minimum vehicle AUTO
+     Large parcel     up to 200.00 kg, minimum vehicle MINI_VAN, signature required
+  PASS  a parcel too heavy for its class is refused — Documents covers parcels up to 2.00 kg. Choose a larger class.
+  PASS  a light document is quoted for every vehicle class — 4 quote(s)
+  PASS  a bike is offered for a document
+  PASS  a bike is NOT offered for a large parcel — MINI_VAN
+
+3. Compatibility:
+     document 1.5 kg → BIKE, AUTO, CAR, MINI_VAN
+     large 120 kg    → MINI_VAN
+
+4. Bike quote: 8.7 km, 15 min, LKR 528.27
+     Base fare                150.00
+     Distance                 348.40
+     Travel time              29.87
+  PASS  booking a large parcel on a bike is refused — PARCEL_VEHICLE_UNAVAILABLE
+  PASS  the parcel is booked
+  PASS  the booked price matches the quote — 528.27 vs 528.27
+
+5. Booked PC-BXSGJC for LKR 528.27
+  PASS  another customer cannot read the parcel — HTTP 404
+  PASS  another customer cannot read the tracking — HTTP 404
+  PASS  the courier is offered the parcel — 1 job(s)
+  PASS  the offer withholds the receiver’s name and phone until claimed
+  PASS  the offer shows the courier’s own pay — earning 433.18 vs customer 528.27
+  PASS  the courier claims the parcel — {"parcelId":"413c8ec3-1c97-4d68-a161-4c3229a041f3","status":"ASSIGNED"}
+
+6. Courier claimed it; earning LKR 433.18
+  PASS  now the courier gets the receiver’s details
+  PASS  the courier is told how much cash to collect — 528.27
+  PASS  the sender cannot mark their own parcel collected — HTTP 403
+  PASS  a collected parcel cannot be cancelled — A parcel that is picked up cannot become cancelled.
+7. Parcel collected; cancellation is no longer possible
+  PASS  the sender sees the tracking trail — 5 entries
+  PASS  the sender sees recorded coordinates
+
+8. Tracking trail:
+     11:35:46  PLACED             Booking created
+     11:36:07  ASSIGNED           Courier assigned
+     11:36:16  HEADING_TO_PICKUP  Courier on the way to collect
+     11:36:20  PICKED_UP          Parcel collected
+     11:36:25  IN_TRANSIT         In transit to the receiver
+  PASS  the courier sees the trail without the recorded coordinates — coordinates withheld from the courier view
+  PASS  the delivery completes — {"parcelId":"413c8ec3-1c97-4d68-a161-4c3229a041f3","status":"DELIVERED","yourEarning":"433.18"}
+  PASS  the parcel is delivered
+  PASS  the cash payment is settled on delivery — PAID
+  PASS  the courier’s phone number is withdrawn after delivery
+
+9. Delivered. Courier earned LKR 433.18; sender paid LKR 528.27
+  PASS  courier pay and sender charge are different numbers
+  PASS  the courier’s earnings include the parcel — net LKR 1165.58 over 4 job(s)
+10. Courier lifetime: 4 job(s), gross LKR 1421.44, commission LKR 255.86, net LKR 1165.58
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-07T11:36:44.184Z

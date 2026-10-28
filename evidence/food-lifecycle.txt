@@ -1,0 +1,65 @@
+FOOD ORDERING AND DELIVERY — end to end
+Started 2026-09-07T11:32:41.720Z
+
+1. Authenticated a customer, a restaurant owner and a courier
+  PASS  restaurants are listed with real distance
+  PASS  the demo restaurant is reachable from the delivery address — distance 1103 m
+
+2. Browsing from the delivery address: Jaffna Kitchen, 1103 m away, rating 0.00
+  PASS  the menu loads
+  PASS  a sold-out dish is shown rather than hidden — Odiyal kool
+3. Menu has 4 dishes; "Odiyal kool" is marked unavailable
+  PASS  an unavailable dish cannot be added to the cart — MENU_ITEM_UNAVAILABLE
+  PASS  a zero quantity is rejected by validation
+  PASS  the cart totals the lines server-side — subtotal 3260.00 (expected 2 × 1450 + 3 × 120)
+  PASS  the cart knows the minimum order is met
+
+4. Cart: 2 lines, subtotal LKR 3260.00
+  PASS  changing a quantity re-totals the cart — subtotal 3020.00
+  PASS  another customer cannot read this cart — HTTP 404
+  PASS  a client-supplied total is refused outright — property total should not exist
+  PASS  the order is placed
+
+5. Order FD-CD2VJB placed:
+     food        LKR 3020.00
+     delivery    LKR 182.45
+     total       LKR 3202.45
+     ready in ~25 min, delivered in ~27 min
+  PASS  the charge is the server’s arithmetic, not the client’s — total 3202.45
+  PASS  another customer cannot read the order — HTTP 404
+  PASS  a customer cannot accept their own order — HTTP 403 FORBIDDEN
+  PASS  the restaurant sees the new order
+  PASS  the restaurant is not shown the customer’s address or phone
+  PASS  the restaurant accepts the order — {"orderId":"e0a627b0-7dbb-47f9-8699-34a6c5cdc99f","status":"ACCEPTED","prepMinutes":20}
+
+6. Restaurant accepted, promising 20 minutes
+  PASS  the kitchen cannot skip straight from accepted to ready — An order that is accepted cannot become ready for pickup.
+  PASS  a customer cannot cancel once the kitchen is cooking — CANCELLATION_NOT_ALLOWED
+7. Cooking started; the cancellation window has closed
+  PASS  the courier is offered the job — 7 job(s)
+  PASS  the offer shows what the courier will be paid, not what the customer pays — earning 149.61 vs customer total 3202.45
+  PASS  the offer withholds the customer’s exact address until the job is taken
+  PASS  the courier claims the job — {"deliveryId":"47aa361f-f3e6-4c97-877f-f0c5d9387e34","orderId":"e0a627b0-7dbb-47f9-8699-34a6c5cdc99f","status":"ASSIGNED"}
+
+8. Courier claimed the delivery; earning LKR 149.61
+  PASS  the courier cannot collect food that is not ready — A delivery that is assigned cannot become picked up.
+9. Kitchen marked the order ready
+  PASS  now the courier gets the delivery address and customer phone
+  PASS  the courier is told how much cash to collect — 3202.45
+  PASS  the customer can follow the progress — 6 steps, now DELIVERING
+10. Tracking shows 6 steps; currently DELIVERING
+  PASS  the delivery completes — {"deliveryId":"47aa361f-f3e6-4c97-877f-f0c5d9387e34","orderId":"e0a627b0-7dbb-47f9-8699-34a6c5cdc99f","status":"DELIVERED","yourEarning":"149.61"}
+  PASS  the order is delivered
+  PASS  the cash payment is settled at the door, not before — PAID
+
+11. Delivered. Courier earned LKR 149.61; customer paid LKR 3202.45
+  PASS  courier pay and customer charge are different numbers
+  PASS  the restaurant sees its own takings and commission — 2 order(s), payout LKR 5134.00
+12. Restaurant takings: 2 order(s), food LKR 6040.00, commission LKR 906.00, payout LKR 5134.00
+  PASS  a courier cannot open the restaurant portal — HTTP 403
+  PASS  the customer was notified at each milestone — 8 notifications
+  PASS  no milestone was notified twice — food.order.delivered, food.order.delivering, food.order.picked_up, food.order.ready, food.order.courier_assigned, food.order.preparing, food.order.accepted, food.order.placed
+13. 8 notifications, all distinct: food.order.delivered, food.order.delivering, food.order.picked_up, food.order.ready, food.order.courier_assigned, food.order.preparing, food.order.accepted, food.order.placed
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-07T11:35:13.155Z

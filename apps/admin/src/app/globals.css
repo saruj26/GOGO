@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+/*
+ * RideFlow design tokens.
+ *
+ * One palette, one type scale, one radius scale — declared here so a component
+ * never invents a colour. The brand is original: a deep teal that reads as
+ * transport without borrowing anyone's identity, warmed by amber for the shared
+ * ride, which is the product's distinguishing idea and deserves its own colour.
+ */
+@theme {
+  --color-brand-50: oklch(0.97 0.02 265);
+  --color-brand-100: oklch(0.93 0.04 265);
+  --color-brand-200: oklch(0.88 0.07 265);
+  --color-brand-300: oklch(0.79 0.11 265);
+  --color-brand-400: oklch(0.68 0.14 266);
+  --color-brand-500: oklch(0.57 0.16 267);
+  --color-brand-600: oklch(0.48 0.15 268);
+  --color-brand-700: oklch(0.40 0.13 269);
+  --color-brand-800: oklch(0.32 0.10 270);
+  --color-brand-900: oklch(0.25 0.08 271);
+
+  /* Shared rides — the feature that makes this platform different. */
+  --color-share-50: oklch(0.97 0.03 75);
+  --color-share-100: oklch(0.94 0.06 75);
+  --color-share-200: oklch(0.88 0.10 74);
+  --color-share-400: oklch(0.76 0.15 70);
+  --color-share-500: oklch(0.70 0.16 66);
+  --color-share-600: oklch(0.60 0.15 62);
+  --color-share-700: oklch(0.48 0.12 60);
+
+  --color-ink-50: oklch(0.985 0.002 250);
+  --color-ink-100: oklch(0.96 0.003 250);
+  --color-ink-200: oklch(0.92 0.004 250);
+  --color-ink-300: oklch(0.85 0.006 250);
+  --color-ink-400: oklch(0.68 0.008 250);
+  --color-ink-500: oklch(0.55 0.010 250);
+  --color-ink-600: oklch(0.44 0.012 250);
+  --color-ink-700: oklch(0.34 0.012 250);
+  --color-ink-800: oklch(0.24 0.010 250);
+  --color-ink-900: oklch(0.16 0.008 250);
+
+  --color-positive-50: oklch(0.96 0.03 155);
+  --color-positive-500: oklch(0.62 0.14 155);
+  --color-positive-700: oklch(0.45 0.11 155);
+
+  --color-caution-50: oklch(0.97 0.04 85);
+  --color-caution-500: oklch(0.74 0.15 78);
+  --color-caution-700: oklch(0.52 0.12 72);
+
+  --color-critical-50: oklch(0.96 0.03 25);
+  --color-critical-500: oklch(0.60 0.19 25);
+  --color-critical-700: oklch(0.47 0.17 25);
+
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-ink-50);
+    color: var(--color-ink-800);
+    font-family: var(--font-sans);
+    /* Nothing on a booking screen should ever scroll sideways. */
+    overflow-x: hidden;
+  }
+
+  /* A visible focus ring is the difference between usable and unusable by keyboard. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  /* Respects the iOS home indicator and Android gesture bar. */
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-ink-200);
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklch, white 60%, transparent),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+      animation: none;
+    }
+  }
+}

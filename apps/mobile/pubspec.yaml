@@ -1,0 +1,56 @@
+name: rideflow_mobile
+description: RideFlow mobile application for customers and drivers.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State. Riverpod keeps state scoped to a feature's provider rather than in a
+  # global singleton, and gives us disposal for free when a screen goes away.
+  flutter_riverpod: ^3.4.3
+
+  # Navigation, including the role-aware redirect that keeps a signed-out user
+  # (or a customer poking at a driver route) out of protected branches.
+  go_router: ^18.0.1
+
+  # HTTP. Chosen over package:http for first-class cancellation, which the
+  # location-search and fare-estimate screens need on every keystroke.
+  dio: ^5.11.1
+
+  # Tokens live in the platform keystore, never in shared preferences.
+  flutter_secure_storage: ^11.0.0
+
+  # geolocator carries its own permission flow, so no separate permission
+  # package is needed. Nothing else in the app requests a permission — there is
+  # no push transport to ask about notifications for.
+  geolocator: ^14.0.3
+
+  # Raster OpenStreetMap tiles, matching the keyless provider the web app uses.
+  # No API key ships in the bundle.
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+
+  # The realtime transport. Matches the Socket.IO server the backend runs.
+  socket_io_client: ^3.1.2
+
+  intl: ^0.20.3
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  mocktail: ^1.0.5
+
+  # Declared explicitly because the test harness imports `riverpod/misc.dart`
+  # for `Override`, which flutter_riverpod 3.x does not re-export.
+  riverpod: ^3.4.3
+
+flutter:
+  uses-material-design: true

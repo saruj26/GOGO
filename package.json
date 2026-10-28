@@ -1,0 +1,37 @@
+{
+  "name": "rideflow-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-service ride-hailing, delivery and dynamic shared-ride platform",
+  "workspaces": [
+    "services/*",
+    "apps/web",
+    "apps/admin",
+    "packages/*"
+  ],
+  "scripts": {
+    "api:dev": "npm run start:dev -w @rideflow/api",
+    "api:build": "npm run build -w @rideflow/api",
+    "api:test": "npm run test -w @rideflow/api",
+    "db:migrate": "npm run db:migrate -w @rideflow/api",
+    "db:seed": "npm run db:seed -w @rideflow/api",
+    "web:dev": "npm run dev -w @rideflow/web",
+    "web:build": "npm run build -w @rideflow/web",
+    "admin:dev": "npm run dev -w @rideflow/admin",
+    "admin:build": "npm run build -w @rideflow/admin",
+    "test": "npm run test -w @rideflow/shared && npm run api:test && npm run test -w @rideflow/web && npm run test -w @rideflow/admin",
+    "build": "npm run api:build && npm run web:build && npm run admin:build",
+    "typecheck": "npm run typecheck -w @rideflow/shared && npm run typecheck -w @rideflow/api && npm run typecheck -w @rideflow/web && npm run typecheck -w @rideflow/admin",
+    "mobile:analyze": "cd apps/mobile && flutter analyze",
+    "mobile:test": "cd apps/mobile && flutter test",
+    "mobile:build": "cd apps/mobile && flutter build apk --release",
+    "mobile:run": "cd apps/mobile && flutter run",
+    "api:e2e": "npm run test:e2e -w @rideflow/api"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

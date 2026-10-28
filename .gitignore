@@ -1,0 +1,23 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+.next/
+coverage/
+*.log
+.DS_Store
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+**/android/.gradle/
+**/android/local.properties
+**/android/.cxx/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/

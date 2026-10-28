@@ -1,0 +1,32 @@
+RESPONSIVE VERIFICATION
+Started 2026-09-10T05:55:33.950Z
+Breakpoints: 320, 375, 390, 414, 768, 1024, 1280, 1440, 1920
+
+Customer web app
+================
+  PASS  320 (small phone)        12 pages
+  PASS  375 (iPhone)             12 pages
+  PASS  390 (iPhone Pro)         12 pages
+  PASS  414 (large phone)        12 pages
+  PASS  768 (tablet)             12 pages
+  PASS  1024 (small laptop)      12 pages
+  PASS  1280 (laptop)            12 pages
+  PASS  1440 (desktop)           12 pages
+  PASS  1920 (large desktop)     12 pages
+
+Admin console
+=============
+  PASS  320 (small phone)        12 pages
+  PASS  375 (iPhone)             12 pages
+  PASS  390 (iPhone Pro)         12 pages
+  PASS  414 (large phone)        12 pages
+  PASS  768 (tablet)             12 pages
+  PASS  1024 (small laptop)      12 pages
+  PASS  1280 (laptop)            12 pages
+  PASS  1440 (desktop)           12 pages
+  PASS  1920 (large desktop)     12 pages
+
+RESULT: no horizontal overflow, clipping, small tap targets or unreadable text at any breakpoint
+Finished 2026-09-10T06:15:33.701Z
+
+[exited with code 0]

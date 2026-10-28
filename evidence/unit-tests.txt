@@ -1,0 +1,27 @@
+=== UNIT TESTS ===
+PASS src/matching/stop-sequencer.spec.ts (5.051 s)
+PASS src/matching/matching.rules.spec.ts (5.373 s)
+PASS src/pricing/pricing.service.spec.ts
+PASS src/parcels/parcel-pricing.spec.ts (5.598 s)
+PASS src/parcels/parcel-order.state.spec.ts
+PASS src/food/food-order.state.spec.ts
+
+Test Suites: 6 passed, 6 total
+Tests:       123 passed, 123 total
+Snapshots:   0 total
+Time:        6.416 s
+Ran all test suites.
+
+=== TYPECHECK ===
+clean
+
+=== BUILD ===
+succeeded
+
+=== MIGRATIONS ===
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "neondb", schema "public" at "[REDACTED_SECRET_PATTERN]"
+
+4 migrations found in prisma/migrations
+
+Database schema is up to date!

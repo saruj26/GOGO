@@ -1,0 +1,19 @@
+{
+  "name": "@rideflow/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Types and API client shared by the customer and admin applications",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.8"
+  }
+}

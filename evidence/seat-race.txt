@@ -1,0 +1,17 @@
+LAST-SEAT RACE — two passengers, one seat, simultaneous requests
+Started 2026-09-07T11:31:09.750Z
+
+  PASS  journey declared with exactly one seat — {"rideId":"43b3f71a-0b2c-419c-8de0-a37e9ad3bb81","reference":"SJ-WHSA9H","seatsOffered":1,"stops":5,"route":{"distanceM":38723,"durationS":3983,"polyline":"k_~y@k~lgNw[wKw[wKw[wKw[yKw[wKw[wKw[wKw[wKw[yKw[wKw[wKw[wKkK{`@mKy`@kK{`@kK{`@mKy`@kK{`@kK{`@mKy`@kK{`@kK{`@mKy`@kK{`@iUqb@gUqb@iUsb@iUqb@gUqb@iUqb@iUqb@gUqb@iUsb@iUqb@gUqb@iUqb@kPaYmP_YkPaYkPaYmP_YkPaYkPaYmP_YkPaYkPaYmP_YkPaY"}}
+  PASS  both passengers were offered the seat — first=1 second=1
+
+  passenger 1 → HTTP 201 booked
+  passenger 2 → HTTP 409 SEATS_UNAVAILABLE
+
+  PASS  exactly one passenger got the seat — 1 succeeded
+  PASS  the other was refused with a clear conflict — 1 refused
+  PASS  the refusal names the real reason — SEATS_UNAVAILABLE
+  PASS  the vehicle is not oversold — occupied=1 of 1
+  PASS  exactly one seat is taken — occupied=1
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-07T11:32:26.197Z

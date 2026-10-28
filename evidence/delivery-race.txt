@@ -1,0 +1,23 @@
+CONCURRENT DELIVERY ACCEPTANCE — two couriers, one job
+Started 2026-09-07T11:36:44.278Z
+
+1. Two couriers online near the restaurant, both free
+2. Order FD-DUJUHD placed and accepted by the kitchen
+  PASS  both couriers are offered the same job — one=f6c2a44e-0f01-4d59-b068-655f55337172 two=f6c2a44e-0f01-4d59-b068-655f55337172
+  PASS  it is genuinely the same delivery
+3. Both couriers see delivery f6c2a44e-0f01-4d59-b068-655f55337172
+
+  courier 1 (Kumar)   → HTTP 409 CONFLICT
+  courier 2 (Vasanth) → HTTP 200 claimed
+
+  PASS  exactly one courier got the job — 1 succeeded
+  PASS  the other was refused with a conflict — 1 refused
+  PASS  the refusal explains why — Another courier has just taken this delivery.
+  PASS  the winner is carrying the delivery
+  PASS  the loser is carrying nothing — null
+4. Now offering the winner a second job while they are still working
+  PASS  a courier already on a job is not offered another — Finish your current job before taking another.
+  PASS  claiming a second job directly is refused with a clear reason — HTTP 409 You are already on a job. Finish it before taking another.
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-07T11:38:42.101Z

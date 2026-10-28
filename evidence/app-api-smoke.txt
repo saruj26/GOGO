@@ -1,0 +1,45 @@
+APPLICATION API SMOKE TEST
+Started 2026-09-10T06:20:21.306Z
+
+1. Signed in as a customer and an administrator
+
+2. Customer application endpoints:
+  PASS  address search returns results — 1 results, attribution "© OpenStreetMap contributors"
+  PASS  reverse lookup names a point — US hotel, Hospital Road, Mixed Retail Residential, Jaffna, J
+  PASS  a place can be saved — {"id":"b470abe3-5f43-4fff-8339-1cbc59aeeb93","label":"Smoke 1789021231367","addr
+  PASS  account summary loads — 10 rides, wallet 5000.00
+  PASS  wallet and ledger load
+  PASS  payment history loads — 20 payments
+  PASS  available promotions load
+  PASS  pending ratings load — 5 rides awaiting a rating
+  PASS  notifications load
+
+3. Admin application endpoints:
+  PASS  a customer cannot reach the admin API — HTTP 403 FORBIDDEN
+  PASS  dashboard metrics load
+     users 8 · drivers 2 (2 online)
+     rides today 0 (0 shared) · food 0 · parcels 0
+     commission this month LKR 20367.19 · driver earnings to pay out LKR 8791.41
+  PASS  revenue trend is gap-filled to 14 points
+  PASS  users list is paginated — 5 of 8
+  PASS  drivers list is paginated — 2 of 2
+  PASS  rides list is paginated — 5 of 17
+  PASS  restaurants list is paginated — 1 of 1
+  PASS  food orders list is paginated — 5 of 10
+  PASS  parcels list is paginated — 2 of 2
+  PASS  payments list is paginated — 5 of 31
+  PASS  promotions list is paginated — 0 of 0
+  PASS  audit logs list is paginated — 5 of 85
+  PASS  pricing rules load — 9 rules in force
+  PASS  settings load with their bounds — 41 runtime rules
+  PASS  settings carry the range the UI should enforce — delivery.max_offer_candidates: 1–100
+
+4. Pricing change creates a new version:
+  PASS  a pricing change is accepted — {"id":"ca8cdc5c-c034-48c6-9725-968bcdcba0c3","version":6,"serviceType":"RIDE","vehicleTypeId":"f2e43a84-a780-4940-be0c-0186684f420c"}
+  PASS  it produces a new version — version 5 → 6
+  PASS  the pricing change was audited — 3 entries
+  PASS  the audit entry names the administrator — Platform Administrator
+  PASS  the audit entry contains no credential
+
+RESULT: ALL CHECKS PASSED
+Finished 2026-09-10T06:21:46.618Z

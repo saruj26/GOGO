@@ -1,0 +1,25 @@
+=== BACKEND ===
+
+Test Suites: 6 passed, 6 total
+Tests:       123 passed, 123 total
+Snapshots:   0 total
+Time:        7.037 s
+Ran all test suites.
+typecheck: clean
+4 migrations found in prisma/migrations
+
+Database schema is up to date!
+
+=== SHARED PACKAGE ===
+ Test Files  2 passed (2)
+      Tests  30 passed (30)
+
+=== CUSTOMER WEB APP ===
+ Test Files  3 passed (3)
+      Tests  21 passed (21)
+typecheck: clean
+
+=== ADMIN CONSOLE ===
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+typecheck: clean
