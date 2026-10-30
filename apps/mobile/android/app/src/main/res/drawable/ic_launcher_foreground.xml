@@ -9,37 +9,37 @@
     <!-- t -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="5.5"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M28,32 L28,64" />
+        android:pathData="M21.5,26.5 L21.5,66.5" />
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="5.5"
         android:strokeLineCap="round"
-        android:pathData="M23,40 L33,40" />
+        android:pathData="M15.25,36.5 L27.75,36.5" />
     <!-- u -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="5.5"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M38,40 L38,58 Q38,66 44,66 Q50,66 50,58 L50,40" />
+        android:pathData="M34,36.5 L34,59 Q34,69 41.5,69 Q49,69 49,59 L49,36.5" />
     <!-- g bowl -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
-        android:pathData="M53.5,48 A6.5,6.5 0 1,0 66.5,48 A6.5,6.5 0 1,0 53.5,48" />
+        android:strokeWidth="5.5"
+        android:pathData="M53.4,46.5 A8.1,8.1 0 1,0 69.6,46.5 A8.1,8.1 0 1,0 53.4,46.5" />
     <!-- g tail -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="5.5"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M66,53 Q68,64 61,68 Q56,70 51,67.5" />
+        android:pathData="M69,52.75 Q71.5,66.5 62.75,71.5 Q56.5,74 50.25,70.875" />
     <!-- o -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
-        android:pathData="M71.5,48 A6.5,6.5 0 1,0 84.5,48 A6.5,6.5 0 1,0 71.5,48" />
+        android:strokeWidth="5.5"
+        android:pathData="M75.9,46.5 A8.1,8.1 0 1,0 92.1,46.5 A8.1,8.1 0 1,0 75.9,46.5" />
 </vector>
