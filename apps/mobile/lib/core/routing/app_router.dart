@@ -102,10 +102,15 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/auth/otp',
+        // `extra` is in-memory only and does not survive a route replay
+        // (e.g. the system back button recreating this route without a
+        // fresh push), so fall back to phone entry rather than crash.
+        redirect: (context, state) => state.extra is OtpScreenArgs ? null : '/auth/phone',
         builder: (context, state) => OtpScreen(args: state.extra as OtpScreenArgs),
       ),
       GoRoute(
         path: '/auth/name',
+        redirect: (context, state) => state.extra is NameEntryArgs ? null : '/auth/phone',
         builder: (context, state) => NameEntryScreen(args: state.extra as NameEntryArgs),
       ),
 
