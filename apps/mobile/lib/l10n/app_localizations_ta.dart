@@ -148,4 +148,89 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String get languageSinhala => 'சிங்களம்';
+
+  @override
+  String get welcomeTagline => 'உங்கள் பயணம், உங்கள் வழியில்';
+
+  @override
+  String get welcomeHeadline => 'உங்கள் நகரத்தில் எளிதாக பயணியுங்கள்';
+
+  @override
+  String get welcomeSubtitle =>
+      'பாதுகாப்பான, மலிவான மற்றும் நம்பகமான சவாரிகள் எப்போது வேண்டுமானாலும்.';
+
+  @override
+  String get logIn => 'உள்நுழைக';
+
+  @override
+  String get vehicleCar => 'கார்';
+
+  @override
+  String get vehicleTukTuk => 'டுக் டுக்';
+
+  @override
+  String get vehicleBike => 'பைக்';
+
+  @override
+  String get phoneEntryTitle => 'உங்கள் மொபைல் எண்ணை உள்ளிடவும்';
+
+  @override
+  String get phoneEntrySubtitle =>
+      'நீங்கள்தான் என உறுதிசெய்ய ஒரு குறியீட்டை SMS செய்வோம்.';
+
+  @override
+  String get continueLabel => 'தொடரவும்';
+
+  @override
+  String get continueWithGoogle => 'Google மூலம் தொடரவும்';
+
+  @override
+  String get orDivider => 'அல்லது';
+
+  @override
+  String get phoneConsentNotice =>
+      'தொடர்வதன் மூலம், SMS வழியாக சரிபார்ப்புக் குறியீட்டைப் பெற ஒப்புக்கொள்கிறீர்கள். செய்தி மற்றும் டேட்டா கட்டணங்கள் பொருந்தலாம்.';
+
+  @override
+  String get otpTitle => 'குறியீட்டை உள்ளிடவும்';
+
+  @override
+  String otpSubtitle(String phone) {
+    return '$phone க்கு ஒரு குறியீட்டை அனுப்பியுள்ளோம்.';
+  }
+
+  @override
+  String otpDevModeBanner(String code) {
+    return 'SMS gateway இன்னும் இல்லை — dev mode குறியீடு: $code';
+  }
+
+  @override
+  String get resendCode => 'குறியீட்டை மீண்டும் அனுப்பு';
+
+  @override
+  String resendCodeIn(int seconds) {
+    return '$seconds வினாடிகளில் மீண்டும் அனுப்பலாம்';
+  }
+
+  @override
+  String get changedNumber => 'எண்ணை மாற்றிவிட்டீர்களா?';
+
+  @override
+  String get verifyLabel => 'சரிபார்க்க';
+
+  @override
+  String otpIncorrectWithAttempts(int count) {
+    return 'அந்தக் குறியீடு தவறானது. $count முயற்சிகள் மீதமுள்ளன.';
+  }
+
+  @override
+  String get otpTooManyAttempts =>
+      'பல தவறான முயற்சிகள். புதிய குறியீட்டைக் கோரவும்.';
+
+  @override
+  String get nameEntryTitle => 'உங்கள் பெயர் என்ன?';
+
+  @override
+  String get nameEntrySubtitle =>
+      'உங்களை முறையாக அழைக்க எங்களுக்குத் தெரியப்படுத்துங்கள்.';
 }

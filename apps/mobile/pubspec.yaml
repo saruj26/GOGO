@@ -46,6 +46,11 @@ dependencies:
   intl: ^0.20.3
   url_launcher: ^6.3.2
 
+  # "Continue with Google" on the phone-entry screen. The button itself is
+  # only shown when a client ID is actually configured (see app_config.dart),
+  # so this dependency never ships a non-functional control.
+  google_sign_in: ^7.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

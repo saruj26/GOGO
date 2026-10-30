@@ -21,3 +21,7 @@ coverage/
 **/android/app/debug/
 **/android/app/profile/
 **/android/app/release/
+
+# Firebase/Google Sign-In config — carries a project API key. Restricted to
+# this app's package + SHA-1, but kept out of the public repo regardless.
+**/android/app/google-services.json

@@ -52,5 +52,45 @@
   "languageSystem": "උපාංග භාෂාව",
   "languageEnglish": "ඉංග්‍රීසි",
   "languageTamil": "දෙමළ",
-  "languageSinhala": "සිංහල"
+  "languageSinhala": "සිංහල",
+
+  "welcomeTagline": "ඔබේ ගමන, ඔබේ විදිහට",
+  "welcomeHeadline": "ඔබේ නගරය පුරා පහසුවෙන් ගමන් කරන්න",
+  "welcomeSubtitle": "ආරක්ෂිත, දැරිය හැකි සහ විශ්වාසදායක ගමන් ඕනෑම වේලාවක.",
+  "logIn": "පුරන්න",
+  "vehicleCar": "කාර්",
+  "vehicleTukTuk": "ත්‍රීරෝද",
+  "vehicleBike": "බයික්",
+
+  "phoneEntryTitle": "ඔබේ ජංගම දුරකථන අංකය ඇතුළත් කරන්න",
+  "phoneEntrySubtitle": "ඔබ බව තහවුරු කිරීමට අපි කේතයක් SMS කරන්නෙමු.",
+  "continueLabel": "ඉදිරියට",
+  "continueWithGoogle": "Google සමඟ ඉදිරියට",
+  "orDivider": "හෝ",
+  "phoneConsentNotice": "ඉදිරියට යාමෙන්, ඔබ SMS මගින් සත්‍යාපන කේතයක් ලබා ගැනීමට එකඟ වේ. පණිවිඩ හා දත්ත ගාස්තු අදාළ විය හැක.",
+
+  "otpTitle": "කේතය ඇතුළත් කරන්න",
+  "otpSubtitle": "අපි {phone} වෙත කේතයක් යවා ඇත.",
+  "@otpSubtitle": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "otpDevModeBanner": "තවම SMS gateway නැත — dev mode කේතය: {code}",
+  "@otpDevModeBanner": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "resendCode": "කේතය යළි යවන්න",
+  "resendCodeIn": "තත්පර {seconds}කින් යළි යවන්න",
+  "@resendCodeIn": {
+    "placeholders": { "seconds": { "type": "int" } }
+  },
+  "changedNumber": "අංකය වෙනස් කළාද?",
+  "verifyLabel": "තහවුරු කරන්න",
+  "otpIncorrectWithAttempts": "එම කේතය වැරදියි. උත්සාහයන් {count}ක් ඉතිරිය.",
+  "@otpIncorrectWithAttempts": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "otpTooManyAttempts": "වැරදි උත්සාහයන් ගණනාවකි. නව කේතයක් ඉල්ලන්න.",
+
+  "nameEntryTitle": "ඔබේ නම කුමක්ද?",
+  "nameEntrySubtitle": "ඔබව නිවැරදිව ආමන්ත්‍රණය කරන ආකාරය අපට දන්වන්න."
 }

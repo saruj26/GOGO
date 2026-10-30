@@ -81,6 +81,12 @@ export class EnvironmentVariables {
   @IsOptional()
   REDIS_URL?: string;
 
+  // Absent means the "Continue with Google" button stays hidden — no client
+  // ID means no working OAuth flow, and a hidden button beats a broken one.
+  @IsString()
+  @IsOptional()
+  GOOGLE_OAUTH_CLIENT_ID?: string;
+
   // --- push notifications -------------------------------------------------
   // Absent means push is off: notifications are still recorded and delivered
   // in-app and over the realtime socket, but nothing reaches a closed app.

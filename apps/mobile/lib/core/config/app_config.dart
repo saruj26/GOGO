@@ -13,6 +13,7 @@ class AppConfig {
     required this.supportEmail,
     required this.connectTimeout,
     required this.receiveTimeout,
+    required this.googleClientId,
   });
 
   final String apiBaseUrl;
@@ -22,6 +23,13 @@ class AppConfig {
   final String supportEmail;
   final Duration connectTimeout;
   final Duration receiveTimeout;
+
+  /// Empty until a Google Cloud/Firebase OAuth client ID is supplied at build
+  /// time. "Continue with Google" is hidden rather than shown-then-failing
+  /// when this is empty — see [googleSignInEnabled].
+  final String googleClientId;
+
+  bool get googleSignInEnabled => googleClientId.isNotEmpty;
 
   /// Reads `--dart-define` values, falling back to the local API so a checkout
   /// runs without a build script.
@@ -52,6 +60,7 @@ class AppConfig {
       ),
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 30),
+      googleClientId: const String.fromEnvironment('GOOGLE_OAUTH_CLIENT_ID'),
     );
   }
 }

@@ -52,5 +52,45 @@
   "languageSystem": "சாதன மொழி",
   "languageEnglish": "ஆங்கிலம்",
   "languageTamil": "தமிழ்",
-  "languageSinhala": "சிங்களம்"
+  "languageSinhala": "சிங்களம்",
+
+  "welcomeTagline": "உங்கள் பயணம், உங்கள் வழியில்",
+  "welcomeHeadline": "உங்கள் நகரத்தில் எளிதாக பயணியுங்கள்",
+  "welcomeSubtitle": "பாதுகாப்பான, மலிவான மற்றும் நம்பகமான சவாரிகள் எப்போது வேண்டுமானாலும்.",
+  "logIn": "உள்நுழைக",
+  "vehicleCar": "கார்",
+  "vehicleTukTuk": "டுக் டுக்",
+  "vehicleBike": "பைக்",
+
+  "phoneEntryTitle": "உங்கள் மொபைல் எண்ணை உள்ளிடவும்",
+  "phoneEntrySubtitle": "நீங்கள்தான் என உறுதிசெய்ய ஒரு குறியீட்டை SMS செய்வோம்.",
+  "continueLabel": "தொடரவும்",
+  "continueWithGoogle": "Google மூலம் தொடரவும்",
+  "orDivider": "அல்லது",
+  "phoneConsentNotice": "தொடர்வதன் மூலம், SMS வழியாக சரிபார்ப்புக் குறியீட்டைப் பெற ஒப்புக்கொள்கிறீர்கள். செய்தி மற்றும் டேட்டா கட்டணங்கள் பொருந்தலாம்.",
+
+  "otpTitle": "குறியீட்டை உள்ளிடவும்",
+  "otpSubtitle": "{phone} க்கு ஒரு குறியீட்டை அனுப்பியுள்ளோம்.",
+  "@otpSubtitle": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "otpDevModeBanner": "SMS gateway இன்னும் இல்லை — dev mode குறியீடு: {code}",
+  "@otpDevModeBanner": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "resendCode": "குறியீட்டை மீண்டும் அனுப்பு",
+  "resendCodeIn": "{seconds} வினாடிகளில் மீண்டும் அனுப்பலாம்",
+  "@resendCodeIn": {
+    "placeholders": { "seconds": { "type": "int" } }
+  },
+  "changedNumber": "எண்ணை மாற்றிவிட்டீர்களா?",
+  "verifyLabel": "சரிபார்க்க",
+  "otpIncorrectWithAttempts": "அந்தக் குறியீடு தவறானது. {count} முயற்சிகள் மீதமுள்ளன.",
+  "@otpIncorrectWithAttempts": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "otpTooManyAttempts": "பல தவறான முயற்சிகள். புதிய குறியீட்டைக் கோரவும்.",
+
+  "nameEntryTitle": "உங்கள் பெயர் என்ன?",
+  "nameEntrySubtitle": "உங்களை முறையாக அழைக்க எங்களுக்குத் தெரியப்படுத்துங்கள்."
 }

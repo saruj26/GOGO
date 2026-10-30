@@ -18,6 +18,7 @@ const testConfig = AppConfig(
   supportEmail: 'support@test',
   connectTimeout: Duration(seconds: 5),
   receiveTimeout: Duration(seconds: 5),
+  googleClientId: '',
 );
 
 /// Builds an [ApiClient] wired to a [FakeHttp], sharing the same token store as

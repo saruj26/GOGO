@@ -14,6 +14,89 @@ class AuthTokens {
       );
 }
 
+/// What `/auth/otp/request` hands back: a ticket to carry through verify,
+/// and — only while there is no SMS gateway — the code itself.
+class OtpRequestResult {
+  const OtpRequestResult({required this.otpTicket, this.devCode});
+
+  final String otpTicket;
+  final String? devCode;
+
+  factory OtpRequestResult.fromJson(Map<String, dynamic> json) => OtpRequestResult(
+        otpTicket: json['otpTicket'] as String,
+        devCode: json['devCode'] as String?,
+      );
+}
+
+/// The three ordinary outcomes of checking a code: it was right and the
+/// phone belongs to an existing account (signed in), it was right and the
+/// phone is new (continue to the name step), or it was wrong (try again
+/// with the fresh ticket — a mistyped digit is not an exception).
+sealed class OtpVerifyResult {
+  factory OtpVerifyResult.fromJson(Map<String, dynamic> json) {
+    switch (json['status']) {
+      case 'authenticated':
+        return OtpAuthenticated(AuthTokens.fromJson(json['tokens'] as Map<String, dynamic>));
+      case 'signup_required':
+        return OtpSignupRequired(
+          signupTicket: json['signupTicket'] as String,
+          firstName: json['firstName'] as String?,
+          email: json['email'] as String?,
+        );
+      case 'incorrect':
+        return OtpIncorrect(
+          otpTicket: json['otpTicket'] as String,
+          attemptsRemaining: toIntOrNull(json['attemptsRemaining']) ?? 0,
+        );
+      default:
+        throw FormatException('Unknown OTP verify status: ${json['status']}');
+    }
+  }
+}
+
+class OtpAuthenticated implements OtpVerifyResult {
+  const OtpAuthenticated(this.tokens);
+  final AuthTokens tokens;
+}
+
+class OtpSignupRequired implements OtpVerifyResult {
+  const OtpSignupRequired({required this.signupTicket, this.firstName, this.email});
+  final String signupTicket;
+  final String? firstName;
+  final String? email;
+}
+
+class OtpIncorrect implements OtpVerifyResult {
+  const OtpIncorrect({required this.otpTicket, required this.attemptsRemaining});
+  final String otpTicket;
+  final int attemptsRemaining;
+}
+
+/// `/auth/google`'s two outcomes: an existing account by email (signed in),
+/// or a verified Google identity that still needs a phone number.
+sealed class GoogleSignInResult {
+  factory GoogleSignInResult.fromJson(Map<String, dynamic> json) {
+    switch (json['status']) {
+      case 'authenticated':
+        return GoogleAuthenticated(AuthTokens.fromJson(json['tokens'] as Map<String, dynamic>));
+      case 'phone_required':
+        return GooglePhoneRequired(json['signupTicket'] as String);
+      default:
+        throw FormatException('Unknown Google sign-in status: ${json['status']}');
+    }
+  }
+}
+
+class GoogleAuthenticated implements GoogleSignInResult {
+  const GoogleAuthenticated(this.tokens);
+  final AuthTokens tokens;
+}
+
+class GooglePhoneRequired implements GoogleSignInResult {
+  const GooglePhoneRequired(this.signupTicket);
+  final String signupTicket;
+}
+
 /// The shared-ride safety preference values the backend accepts.
 ///
 /// This list mirrors the server enum exactly. Adding an option here that the

@@ -147,4 +147,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageSinhala => 'Sinhala';
+
+  @override
+  String get welcomeTagline => 'Your Ride, Your Way';
+
+  @override
+  String get welcomeHeadline => 'Move around your city easily';
+
+  @override
+  String get welcomeSubtitle =>
+      'Safe, affordable and reliable rides whenever you need.';
+
+  @override
+  String get logIn => 'Log in';
+
+  @override
+  String get vehicleCar => 'Car';
+
+  @override
+  String get vehicleTukTuk => 'Tuk Tuk';
+
+  @override
+  String get vehicleBike => 'Bike';
+
+  @override
+  String get phoneEntryTitle => 'Enter your mobile number';
+
+  @override
+  String get phoneEntrySubtitle =>
+      'We\'ll text you a code to verify it\'s you.';
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get orDivider => 'or';
+
+  @override
+  String get phoneConsentNotice =>
+      'By continuing, you agree to receive a verification code by SMS. Message and data rates may apply.';
+
+  @override
+  String get otpTitle => 'Enter the code';
+
+  @override
+  String otpSubtitle(String phone) {
+    return 'We sent a code to $phone.';
+  }
+
+  @override
+  String otpDevModeBanner(String code) {
+    return 'No SMS gateway yet — dev mode code: $code';
+  }
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String resendCodeIn(int seconds) {
+    return 'Resend code in ${seconds}s';
+  }
+
+  @override
+  String get changedNumber => 'Changed your number?';
+
+  @override
+  String get verifyLabel => 'Verify';
+
+  @override
+  String otpIncorrectWithAttempts(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count attempts left',
+      one: '1 attempt left',
+    );
+    return 'That code is incorrect. $_temp0.';
+  }
+
+  @override
+  String get otpTooManyAttempts =>
+      'Too many incorrect attempts. Request a new code.';
+
+  @override
+  String get nameEntryTitle => 'What\'s your name?';
+
+  @override
+  String get nameEntrySubtitle => 'Let us know how to properly address you.';
 }

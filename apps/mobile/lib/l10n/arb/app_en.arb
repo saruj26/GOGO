@@ -52,5 +52,45 @@
   "languageSystem": "System default",
   "languageEnglish": "English",
   "languageTamil": "Tamil",
-  "languageSinhala": "Sinhala"
+  "languageSinhala": "Sinhala",
+
+  "welcomeTagline": "Your Ride, Your Way",
+  "welcomeHeadline": "Move around your city easily",
+  "welcomeSubtitle": "Safe, affordable and reliable rides whenever you need.",
+  "logIn": "Log in",
+  "vehicleCar": "Car",
+  "vehicleTukTuk": "Tuk Tuk",
+  "vehicleBike": "Bike",
+
+  "phoneEntryTitle": "Enter your mobile number",
+  "phoneEntrySubtitle": "We'll text you a code to verify it's you.",
+  "continueLabel": "Continue",
+  "continueWithGoogle": "Continue with Google",
+  "orDivider": "or",
+  "phoneConsentNotice": "By continuing, you agree to receive a verification code by SMS. Message and data rates may apply.",
+
+  "otpTitle": "Enter the code",
+  "otpSubtitle": "We sent a code to {phone}.",
+  "@otpSubtitle": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "otpDevModeBanner": "No SMS gateway yet — dev mode code: {code}",
+  "@otpDevModeBanner": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "resendCode": "Resend code",
+  "resendCodeIn": "Resend code in {seconds}s",
+  "@resendCodeIn": {
+    "placeholders": { "seconds": { "type": "int" } }
+  },
+  "changedNumber": "Changed your number?",
+  "verifyLabel": "Verify",
+  "otpIncorrectWithAttempts": "That code is incorrect. {count, plural, one {1 attempt left} other {{count} attempts left}}.",
+  "@otpIncorrectWithAttempts": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "otpTooManyAttempts": "Too many incorrect attempts. Request a new code.",
+
+  "nameEntryTitle": "What's your name?",
+  "nameEntrySubtitle": "Let us know how to properly address you."
 }

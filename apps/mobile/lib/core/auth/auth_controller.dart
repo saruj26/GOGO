@@ -114,6 +114,87 @@ class AuthController extends Notifier<AuthState> {
     }
   }
 
+  /// Starts phone verification. Touches no session state — nothing is
+  /// decided until the code comes back.
+  Future<OtpRequestResult> requestOtp(String phone) => _api.auth.requestOtp(phone);
+
+  /// Checks a code. A correct code for an existing phone signs the person in
+  /// exactly like [signIn]; the other two outcomes ([OtpSignupRequired],
+  /// [OtpIncorrect]) touch no session state — the caller just continues the
+  /// on-screen flow with what comes back.
+  Future<OtpVerifyResult> verifyOtp({
+    required String phone,
+    required String code,
+    required String otpTicket,
+    String? priorSignupTicket,
+  }) async {
+    final result = await _api.auth.verifyOtp(
+      phone: phone,
+      code: code,
+      otpTicket: otpTicket,
+      priorSignupTicket: priorSignupTicket,
+    );
+
+    if (result case OtpAuthenticated(:final tokens)) {
+      await _tokens.write(
+        SessionTokens(accessToken: tokens.accessToken, refreshToken: tokens.refreshToken),
+      );
+      final user = await _api.auth.me();
+      state = AuthState(status: AuthStatus.authenticated, user: user);
+      unawaited(ref.read(realtimeClientProvider).connect());
+    }
+
+    return result;
+  }
+
+  /// Finishes creating the account a signup ticket was verified for.
+  Future<bool> completeSignup({
+    required String signupTicket,
+    required String firstName,
+    String? lastName,
+    String? gender,
+  }) async {
+    state = state.copyWith(busy: true, clearError: true);
+
+    try {
+      final tokens = await _api.auth.completeSignup(
+        signupTicket: signupTicket,
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+      );
+      await _tokens.write(
+        SessionTokens(accessToken: tokens.accessToken, refreshToken: tokens.refreshToken),
+      );
+
+      final user = await _api.auth.me();
+      state = AuthState(status: AuthStatus.authenticated, user: user);
+      unawaited(ref.read(realtimeClientProvider).connect());
+      return true;
+    } on ApiException catch (error) {
+      state = state.copyWith(busy: false, error: error.message);
+      return false;
+    }
+  }
+
+  /// Verifies a Google identity. An existing account signs straight in,
+  /// exactly like [signIn]; a new identity ([GooglePhoneRequired]) touches no
+  /// session state — the caller continues into phone verification.
+  Future<GoogleSignInResult> signInWithGoogle(String idToken) async {
+    final result = await _api.auth.googleSignIn(idToken);
+
+    if (result case GoogleAuthenticated(:final tokens)) {
+      await _tokens.write(
+        SessionTokens(accessToken: tokens.accessToken, refreshToken: tokens.refreshToken),
+      );
+      final user = await _api.auth.me();
+      state = AuthState(status: AuthStatus.authenticated, user: user);
+      unawaited(ref.read(realtimeClientProvider).connect());
+    }
+
+    return result;
+  }
+
   /// Signs out locally whatever the network does.
   ///
   /// Revoking the refresh token server-side is the right thing to attempt, but

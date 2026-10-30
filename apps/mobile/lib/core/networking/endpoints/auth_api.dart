@@ -38,6 +38,71 @@ class AuthApi {
     return AuthTokens.fromJson(data);
   }
 
+  /// Starts phone verification. No SMS gateway is configured yet, so
+  /// [OtpRequestResult.devCode] carries the code directly in development —
+  /// `null` once a real gateway exists and dev mode is switched off.
+  Future<OtpRequestResult> requestOtp(String phone) async {
+    final data = await _client.post<Map<String, dynamic>>(
+      '/auth/otp/request',
+      body: {'phone': phone},
+      anonymous: true,
+    );
+    return OtpRequestResult.fromJson(data);
+  }
+
+  /// A wrong code is an ordinary, retryable outcome, not a thrown error —
+  /// see [OtpVerifyResult].
+  Future<OtpVerifyResult> verifyOtp({
+    required String phone,
+    required String code,
+    required String otpTicket,
+    String? priorSignupTicket,
+  }) async {
+    final data = await _client.post<Map<String, dynamic>>(
+      '/auth/otp/verify',
+      body: {
+        'phone': phone,
+        'code': code,
+        'otpTicket': otpTicket,
+        'signupTicket': ?priorSignupTicket,
+      },
+      anonymous: true,
+    );
+    return OtpVerifyResult.fromJson(data);
+  }
+
+  /// Finishes creating the account a signup ticket was verified for.
+  Future<AuthTokens> completeSignup({
+    required String signupTicket,
+    required String firstName,
+    String? lastName,
+    String? gender,
+  }) async {
+    final data = await _client.post<Map<String, dynamic>>(
+      '/auth/register/complete',
+      body: {
+        'signupTicket': signupTicket,
+        'firstName': firstName,
+        if (lastName != null && lastName.isNotEmpty) 'lastName': lastName,
+        if (gender != null && gender.isNotEmpty) 'gender': gender,
+      },
+      anonymous: true,
+    );
+    return AuthTokens.fromJson(data);
+  }
+
+  /// Verifies a Google ID token server-side. An existing account signs
+  /// straight in; a new identity still needs a verified phone — see
+  /// [GoogleSignInResult].
+  Future<GoogleSignInResult> googleSignIn(String idToken) async {
+    final data = await _client.post<Map<String, dynamic>>(
+      '/auth/google',
+      body: {'idToken': idToken},
+      anonymous: true,
+    );
+    return GoogleSignInResult.fromJson(data);
+  }
+
   Future<Me> me() async {
     final data = await _client.get<Map<String, dynamic>>('/auth/me');
     return Me.fromJson(data);

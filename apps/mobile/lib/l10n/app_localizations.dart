@@ -369,6 +369,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sinhala'**
   String get languageSinhala;
+
+  /// No description provided for @welcomeTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Ride, Your Way'**
+  String get welcomeTagline;
+
+  /// No description provided for @welcomeHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Move around your city easily'**
+  String get welcomeHeadline;
+
+  /// No description provided for @welcomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe, affordable and reliable rides whenever you need.'**
+  String get welcomeSubtitle;
+
+  /// No description provided for @logIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get logIn;
+
+  /// No description provided for @vehicleCar.
+  ///
+  /// In en, this message translates to:
+  /// **'Car'**
+  String get vehicleCar;
+
+  /// No description provided for @vehicleTukTuk.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuk Tuk'**
+  String get vehicleTukTuk;
+
+  /// No description provided for @vehicleBike.
+  ///
+  /// In en, this message translates to:
+  /// **'Bike'**
+  String get vehicleBike;
+
+  /// No description provided for @phoneEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your mobile number'**
+  String get phoneEntryTitle;
+
+  /// No description provided for @phoneEntrySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll text you a code to verify it\'s you.'**
+  String get phoneEntrySubtitle;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @continueWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// No description provided for @orDivider.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get orDivider;
+
+  /// No description provided for @phoneConsentNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing, you agree to receive a verification code by SMS. Message and data rates may apply.'**
+  String get phoneConsentNotice;
+
+  /// No description provided for @otpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code'**
+  String get otpTitle;
+
+  /// No description provided for @otpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a code to {phone}.'**
+  String otpSubtitle(String phone);
+
+  /// No description provided for @otpDevModeBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'No SMS gateway yet — dev mode code: {code}'**
+  String otpDevModeBanner(String code);
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resendCode;
+
+  /// No description provided for @resendCodeIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code in {seconds}s'**
+  String resendCodeIn(int seconds);
+
+  /// No description provided for @changedNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed your number?'**
+  String get changedNumber;
+
+  /// No description provided for @verifyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verifyLabel;
+
+  /// No description provided for @otpIncorrectWithAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'That code is incorrect. {count, plural, one {1 attempt left} other {{count} attempts left}}.'**
+  String otpIncorrectWithAttempts(int count);
+
+  /// No description provided for @otpTooManyAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many incorrect attempts. Request a new code.'**
+  String get otpTooManyAttempts;
+
+  /// No description provided for @nameEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your name?'**
+  String get nameEntryTitle;
+
+  /// No description provided for @nameEntrySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let us know how to properly address you.'**
+  String get nameEntrySubtitle;
 }
 
 class _AppLocalizationsDelegate

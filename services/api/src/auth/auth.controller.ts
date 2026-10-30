@@ -6,14 +6,18 @@ import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { Public } from '../common/decorators/roles.decorator';
 import { PrismaService } from '../prisma/prisma.service';
 import { AuthenticatedUser } from './auth.constants';
-import { AuthService } from './auth.service';
+import { AuthService, GoogleResult, SignupResult } from './auth.service';
 import {
   AuthTokensDto,
+  CompleteSignupDto,
+  GoogleSignInDto,
   LoginDto,
   RefreshDto,
   RegisterDto,
+  RequestOtpDto,
   UpdateSafetyPreferencesDto,
   UpdateProfileDto,
+  VerifyOtpDto,
 } from './dto/auth.dto';
 
 @ApiTags('auth')
@@ -52,6 +56,41 @@ export class AuthController {
       ip: req.ip,
       userAgent: req.get('user-agent') ?? undefined,
     });
+  }
+
+  @Public()
+  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  @Post('otp/request')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Request a phone verification code' })
+  requestOtp(@Body() dto: RequestOtpDto): Promise<{ otpTicket: string; devCode?: string }> {
+    return this.auth.requestOtp(dto);
+  }
+
+  @Public()
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @Post('otp/verify')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Verify a phone code — logs an existing account in directly' })
+  verifyOtp(@Body() dto: VerifyOtpDto): Promise<SignupResult> {
+    return this.auth.verifyOtp(dto);
+  }
+
+  @Public()
+  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  @Post('register/complete')
+  @ApiOperation({ summary: 'Finish creating an account from a verified signup ticket' })
+  completeSignup(@Body() dto: CompleteSignupDto): Promise<AuthTokensDto> {
+    return this.auth.completeSignup(dto);
+  }
+
+  @Public()
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @Post('google')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Sign in (or start signup) with a Google ID token' })
+  googleSignIn(@Body() dto: GoogleSignInDto): Promise<GoogleResult> {
+    return this.auth.googleSignIn(dto);
   }
 
   @ApiBearerAuth()

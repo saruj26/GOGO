@@ -147,4 +147,89 @@ class AppLocalizationsSi extends AppLocalizations {
 
   @override
   String get languageSinhala => 'සිංහල';
+
+  @override
+  String get welcomeTagline => 'ඔබේ ගමන, ඔබේ විදිහට';
+
+  @override
+  String get welcomeHeadline => 'ඔබේ නගරය පුරා පහසුවෙන් ගමන් කරන්න';
+
+  @override
+  String get welcomeSubtitle =>
+      'ආරක්ෂිත, දැරිය හැකි සහ විශ්වාසදායක ගමන් ඕනෑම වේලාවක.';
+
+  @override
+  String get logIn => 'පුරන්න';
+
+  @override
+  String get vehicleCar => 'කාර්';
+
+  @override
+  String get vehicleTukTuk => 'ත්‍රීරෝද';
+
+  @override
+  String get vehicleBike => 'බයික්';
+
+  @override
+  String get phoneEntryTitle => 'ඔබේ ජංගම දුරකථන අංකය ඇතුළත් කරන්න';
+
+  @override
+  String get phoneEntrySubtitle =>
+      'ඔබ බව තහවුරු කිරීමට අපි කේතයක් SMS කරන්නෙමු.';
+
+  @override
+  String get continueLabel => 'ඉදිරියට';
+
+  @override
+  String get continueWithGoogle => 'Google සමඟ ඉදිරියට';
+
+  @override
+  String get orDivider => 'හෝ';
+
+  @override
+  String get phoneConsentNotice =>
+      'ඉදිරියට යාමෙන්, ඔබ SMS මගින් සත්‍යාපන කේතයක් ලබා ගැනීමට එකඟ වේ. පණිවිඩ හා දත්ත ගාස්තු අදාළ විය හැක.';
+
+  @override
+  String get otpTitle => 'කේතය ඇතුළත් කරන්න';
+
+  @override
+  String otpSubtitle(String phone) {
+    return 'අපි $phone වෙත කේතයක් යවා ඇත.';
+  }
+
+  @override
+  String otpDevModeBanner(String code) {
+    return 'තවම SMS gateway නැත — dev mode කේතය: $code';
+  }
+
+  @override
+  String get resendCode => 'කේතය යළි යවන්න';
+
+  @override
+  String resendCodeIn(int seconds) {
+    return 'තත්පර $secondsකින් යළි යවන්න';
+  }
+
+  @override
+  String get changedNumber => 'අංකය වෙනස් කළාද?';
+
+  @override
+  String get verifyLabel => 'තහවුරු කරන්න';
+
+  @override
+  String otpIncorrectWithAttempts(int count) {
+    return 'එම කේතය වැරදියි. උත්සාහයන් $countක් ඉතිරිය.';
+  }
+
+  @override
+  String get otpTooManyAttempts =>
+      'වැරදි උත්සාහයන් ගණනාවකි. නව කේතයක් ඉල්ලන්න.';
+
+  @override
+  String get nameEntryTitle => 'ඔබේ නම කුමක්ද?';
+
+  @override
+  String get nameEntrySubtitle =>
+      'ඔබව නිවැරදිව ආමන්ත්‍රණය කරන ආකාරය අපට දන්වන්න.';
 }

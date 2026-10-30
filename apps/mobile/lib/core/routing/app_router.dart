@@ -19,6 +19,9 @@ import '../../features/food/restaurants_screen.dart';
 import '../../features/history/activity_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/notifications/notifications_screen.dart';
+import '../../features/onboarding/name_entry_screen.dart';
+import '../../features/onboarding/otp_screen.dart';
+import '../../features/onboarding/phone_entry_screen.dart';
 import '../../features/parcels/parcel_booking_screen.dart';
 import '../../features/parcels/parcel_tracking_screen.dart';
 import '../../features/payments/wallet_screen.dart';
@@ -33,6 +36,7 @@ import '../../features/splash/splash_screen.dart';
 import '../../features/support/support_screen.dart';
 import '../../features/support/tickets_screen.dart';
 import '../../features/tracking/ride_tracking_screen.dart';
+import '../../features/welcome/welcome_screen.dart';
 import '../auth/auth_controller.dart';
 import '../auth/auth_state.dart';
 import '../widgets/states.dart';
@@ -66,9 +70,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       // returning user to sign-in for a frame and back is worse than waiting.
       if (!session.isResolved) return path == '/starting' ? null : '/starting';
 
-      final onAuthScreen = path == '/sign-in' || path == '/register';
+      final onAuthScreen = path == '/welcome' ||
+          path == '/sign-in' ||
+          path == '/register' ||
+          path.startsWith('/auth/');
 
-      if (!session.isAuthenticated) return onAuthScreen ? null : '/sign-in';
+      if (!session.isAuthenticated) return onAuthScreen ? null : '/welcome';
 
       if (onAuthScreen || path == '/starting') {
         return session.isDriver ? '/driver' : '/';
@@ -83,8 +90,24 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/starting',
         builder: (context, state) => const SplashScreen(),
       ),
+      GoRoute(path: '/welcome', builder: (context, state) => const WelcomeScreen()),
       GoRoute(path: '/sign-in', builder: (context, state) => const SignInScreen()),
       GoRoute(path: '/register', builder: (context, state) => const RegisterScreen()),
+
+      // ------------------------------------------- phone + OTP + Google
+      GoRoute(
+        path: '/auth/phone',
+        builder: (context, state) =>
+            PhoneEntryScreen(prefillSignupTicket: state.extra as String?),
+      ),
+      GoRoute(
+        path: '/auth/otp',
+        builder: (context, state) => OtpScreen(args: state.extra as OtpScreenArgs),
+      ),
+      GoRoute(
+        path: '/auth/name',
+        builder: (context, state) => NameEntryScreen(args: state.extra as NameEntryArgs),
+      ),
 
       // ---------------------------------------------------------- customer
       StatefulShellRoute.indexedStack(

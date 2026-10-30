@@ -41,6 +41,12 @@ export enum DomainErrorCode {
   NOT_FOUND = 'NOT_FOUND',
   CONFLICT = 'CONFLICT',
   VALIDATION_FAILED = 'VALIDATION_FAILED',
+
+  // auth: OTP & Google Sign-In
+  OTP_INCORRECT = 'OTP_INCORRECT',
+  OTP_EXPIRED = 'OTP_EXPIRED',
+  GOOGLE_SIGN_IN_FAILED = 'GOOGLE_SIGN_IN_FAILED',
+  GOOGLE_NOT_CONFIGURED = 'GOOGLE_NOT_CONFIGURED',
 }
 
 export class DomainError extends HttpException {

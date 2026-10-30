@@ -4,6 +4,13 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Applied imperatively, not in the `plugins {}` block above, because it must
+// only run once google-services.json actually exists — Google Sign-In isn't
+// configured yet, and the build must keep working until it is.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}
+
 android {
     namespace = "lk.tugo.mobile"
     compileSdk = flutter.compileSdkVersion

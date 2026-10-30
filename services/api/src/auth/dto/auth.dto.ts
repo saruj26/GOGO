@@ -70,6 +70,73 @@ export class RefreshDto {
   refreshToken!: string;
 }
 
+export class RequestOtpDto {
+  @ApiProperty({ example: '+94771234567' })
+  @IsString()
+  @Matches(PHONE_PATTERN, { message: 'phone must be a valid phone number' })
+  phone!: string;
+}
+
+export class VerifyOtpDto {
+  @ApiProperty({ example: '+94771234567' })
+  @IsString()
+  @Matches(PHONE_PATTERN, { message: 'phone must be a valid phone number' })
+  phone!: string;
+
+  @ApiProperty({ description: 'The code the person received.' })
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(8)
+  code!: string;
+
+  @ApiProperty({ description: 'The ticket returned by /auth/otp/request.' })
+  @IsString()
+  @IsNotEmpty()
+  otpTicket!: string;
+
+  @ApiPropertyOptional({
+    description:
+      'A signup ticket from a prior Google step, still missing a phone — merged in once this code verifies.',
+  })
+  @IsOptional()
+  @IsString()
+  signupTicket?: string;
+}
+
+export class CompleteSignupDto {
+  @ApiProperty({
+    description:
+      'The signup ticket returned once a phone (and optionally a Google identity) has been verified.',
+  })
+  @IsString()
+  @IsNotEmpty()
+  signupTicket!: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(80)
+  firstName!: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  @MaxLength(80)
+  lastName?: string;
+
+  @ApiPropertyOptional({ enum: Gender })
+  @IsOptional()
+  @IsEnum(Gender)
+  gender?: Gender;
+}
+
+export class GoogleSignInDto {
+  @ApiProperty({ description: 'The ID token returned by Google Sign-In on the device.' })
+  @IsString()
+  @IsNotEmpty()
+  idToken!: string;
+}
+
 export class UpdateSafetyPreferencesDto {
   @ApiPropertyOptional()
   @IsOptional()

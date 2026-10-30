@@ -82,6 +82,11 @@ export const SETTING_KEYS = {
   PARCEL_WEIGHT_SURCHARGE_PER_KG: 'parcel.weight_surcharge_per_kg',
   PARCEL_MAX_DECLARED_VALUE: 'parcel.max_declared_value',
   PARCEL_SIGNATURE_SURCHARGE: 'parcel.signature_surcharge',
+
+  // --- auth -----------------------------------------------------------------
+  OTP_EXPIRY_SECONDS: 'auth.otp_expiry_seconds',
+  OTP_LENGTH: 'auth.otp_length',
+  OTP_DEV_MODE_EXPOSE_CODE: 'auth.otp_dev_mode_expose_code',
 } as const;
 
 export type SettingKey = (typeof SETTING_KEYS)[keyof typeof SETTING_KEYS];
@@ -511,6 +516,35 @@ export const SETTING_DEFINITIONS: SettingDefinition[] = [
     description: 'Bookings declaring more than this are refused and must be handled manually.',
     min: 0,
     max: 100000000,
+  },
+  {
+    key: SETTING_KEYS.OTP_EXPIRY_SECONDS,
+    defaultValue: 300,
+    valueType: SettingValueType.NUMBER,
+    category: 'auth',
+    label: 'OTP code validity (seconds)',
+    description: 'How long a phone verification code stays valid after being requested.',
+    min: 60,
+    max: 1800,
+  },
+  {
+    key: SETTING_KEYS.OTP_LENGTH,
+    defaultValue: 6,
+    valueType: SettingValueType.NUMBER,
+    category: 'auth',
+    label: 'OTP code length (digits)',
+    description: 'Number of digits in a phone verification code.',
+    min: 4,
+    max: 8,
+  },
+  {
+    key: SETTING_KEYS.OTP_DEV_MODE_EXPOSE_CODE,
+    defaultValue: true,
+    valueType: SettingValueType.BOOLEAN,
+    category: 'auth',
+    label: 'Expose OTP code in the API response (dev mode)',
+    description:
+      'No SMS gateway is configured yet, so the code is returned directly to the client and logged. Turn this off the moment a real SMS provider is wired in — it must never be on in production.',
   },
 ];
 
