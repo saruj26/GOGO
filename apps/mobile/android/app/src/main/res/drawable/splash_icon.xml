@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The "tugo" wordmark sized for Android's automatic splash screen (API
+     31+), which crops to a tighter safe zone than a launcher icon does.
+     Kept smaller than ic_launcher_foreground.xml for that reason — do not
+     reuse this file for the launcher icon, or vice versa. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- t -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M28,32 L28,64" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:pathData="M23,40 L33,40" />
+    <!-- u -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M38,40 L38,58 Q38,66 44,66 Q50,66 50,58 L50,40" />
+    <!-- g bowl -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:pathData="M53.5,48 A6.5,6.5 0 1,0 66.5,48 A6.5,6.5 0 1,0 53.5,48" />
+    <!-- g tail -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M66,53 Q68,64 61,68 Q56,70 51,67.5" />
+    <!-- o -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.5"
+        android:pathData="M71.5,48 A6.5,6.5 0 1,0 84.5,48 A6.5,6.5 0 1,0 71.5,48" />
+</vector>
