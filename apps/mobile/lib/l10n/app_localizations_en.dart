@@ -237,4 +237,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nameEntrySubtitle => 'Let us know how to properly address you.';
+
+  @override
+  String get profileEditProfile => 'Edit profile';
+
+  @override
+  String get profileStatRides => 'Rides';
+
+  @override
+  String get profileStatFood => 'Food';
+
+  @override
+  String get profileStatParcels => 'Parcels';
+
+  @override
+  String get profileWallet => 'Wallet & payments';
+
+  @override
+  String get profileWalletSubtitleEmpty => 'Balance and payment history';
+
+  @override
+  String get profilePromotions => 'Promotions';
+
+  @override
+  String get profileSavedPlaces => 'Saved places';
+
+  @override
+  String get profileSharedRideSafety => 'Shared-ride safety';
+
+  @override
+  String get profileNotSet => 'Not set';
+
+  @override
+  String get profileNotifications => 'Notifications';
+
+  @override
+  String get profileHelpSupport => 'Help & support';
+
+  @override
+  String get profileSupportTickets => 'Your support tickets';
+
+  @override
+  String get profileSwitchToDriving => 'Switch to driving';
+
+  @override
+  String get profileSwitchToDrivingSubtitle =>
+      'Go online and take rides and deliveries';
+
+  @override
+  String get profileSignOut => 'Sign out';
+
+  @override
+  String get profileSignOutConfirmTitle => 'Sign out?';
+
+  @override
+  String get profileSignOutConfirmBody =>
+      'You will need your phone number and password to sign back in.';
+
+  @override
+  String get profileStay => 'Stay';
 }

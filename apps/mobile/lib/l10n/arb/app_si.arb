@@ -92,5 +92,25 @@
   "otpTooManyAttempts": "වැරදි උත්සාහයන් ගණනාවකි. නව කේතයක් ඉල්ලන්න.",
 
   "nameEntryTitle": "ඔබේ නම කුමක්ද?",
-  "nameEntrySubtitle": "ඔබව නිවැරදිව ආමන්ත්‍රණය කරන ආකාරය අපට දන්වන්න."
+  "nameEntrySubtitle": "ඔබව නිවැරදිව ආමන්ත්‍රණය කරන ආකාරය අපට දන්වන්න.",
+
+  "profileEditProfile": "පැතිකඩ සංස්කරණය කරන්න",
+  "profileStatRides": "සවාරි",
+  "profileStatFood": "ආහාර",
+  "profileStatParcels": "පාර්සල්",
+  "profileWallet": "පසුම්බිය සහ ගෙවීම්",
+  "profileWalletSubtitleEmpty": "ශේෂය සහ ගෙවීම් ඉතිහාසය",
+  "profilePromotions": "ප්‍රවර්ධන",
+  "profileSavedPlaces": "සුරැකි ස්ථාන",
+  "profileSharedRideSafety": "බෙදාගත් සවාරි ආරක්ෂාව",
+  "profileNotSet": "සකසා නැත",
+  "profileNotifications": "දැනුම්දීම්",
+  "profileHelpSupport": "උදව් සහ සහාය",
+  "profileSupportTickets": "ඔබේ සහාය ටිකට්පත්",
+  "profileSwitchToDriving": "රියදුරු ලෙස මාරු වන්න",
+  "profileSwitchToDrivingSubtitle": "සබැඳි වී සවාරි සහ බෙදාහැරීම් ගන්න",
+  "profileSignOut": "ඉවත් වන්න",
+  "profileSignOutConfirmTitle": "ඉවත් වන්නද?",
+  "profileSignOutConfirmBody": "නැවත පිවිසීමට ඔබේ දුරකථන අංකය සහ මුරපදය අවශ්‍ය වේ.",
+  "profileStay": "රැඳී සිටින්න"
 }

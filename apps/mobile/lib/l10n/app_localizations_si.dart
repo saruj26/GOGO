@@ -232,4 +232,63 @@ class AppLocalizationsSi extends AppLocalizations {
   @override
   String get nameEntrySubtitle =>
       'ඔබව නිවැරදිව ආමන්ත්‍රණය කරන ආකාරය අපට දන්වන්න.';
+
+  @override
+  String get profileEditProfile => 'පැතිකඩ සංස්කරණය කරන්න';
+
+  @override
+  String get profileStatRides => 'සවාරි';
+
+  @override
+  String get profileStatFood => 'ආහාර';
+
+  @override
+  String get profileStatParcels => 'පාර්සල්';
+
+  @override
+  String get profileWallet => 'පසුම්බිය සහ ගෙවීම්';
+
+  @override
+  String get profileWalletSubtitleEmpty => 'ශේෂය සහ ගෙවීම් ඉතිහාසය';
+
+  @override
+  String get profilePromotions => 'ප්‍රවර්ධන';
+
+  @override
+  String get profileSavedPlaces => 'සුරැකි ස්ථාන';
+
+  @override
+  String get profileSharedRideSafety => 'බෙදාගත් සවාරි ආරක්ෂාව';
+
+  @override
+  String get profileNotSet => 'සකසා නැත';
+
+  @override
+  String get profileNotifications => 'දැනුම්දීම්';
+
+  @override
+  String get profileHelpSupport => 'උදව් සහ සහාය';
+
+  @override
+  String get profileSupportTickets => 'ඔබේ සහාය ටිකට්පත්';
+
+  @override
+  String get profileSwitchToDriving => 'රියදුරු ලෙස මාරු වන්න';
+
+  @override
+  String get profileSwitchToDrivingSubtitle =>
+      'සබැඳි වී සවාරි සහ බෙදාහැරීම් ගන්න';
+
+  @override
+  String get profileSignOut => 'ඉවත් වන්න';
+
+  @override
+  String get profileSignOutConfirmTitle => 'ඉවත් වන්නද?';
+
+  @override
+  String get profileSignOutConfirmBody =>
+      'නැවත පිවිසීමට ඔබේ දුරකථන අංකය සහ මුරපදය අවශ්‍ය වේ.';
+
+  @override
+  String get profileStay => 'රැඳී සිටින්න';
 }

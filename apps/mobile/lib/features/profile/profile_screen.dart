@@ -19,11 +19,12 @@ class ProfileScreen extends ConsumerWidget {
     final user = ref.watch(currentUserProvider);
     final summary = ref.watch(accountSummaryProvider);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     if (user == null) return const Scaffold(body: LoadingState());
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Account')),
+      appBar: AppBar(title: Text(l10n.navAccount)),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(accountSummaryProvider);
@@ -68,7 +69,7 @@ class ProfileScreen extends ConsumerWidget {
             OutlinedButton.icon(
               onPressed: () => context.push('/profile/edit'),
               icon: const Icon(Icons.edit_outlined),
-              label: const Text('Edit profile'),
+              label: Text(l10n.profileEditProfile),
             ),
             Gap.lg,
             summary.when(
@@ -76,11 +77,11 @@ class ProfileScreen extends ConsumerWidget {
               error: (_, _) => const SizedBox.shrink(),
               data: (value) => Row(
                 children: [
-                  _Stat(label: 'Rides', value: '${value.rides}'),
+                  _Stat(label: l10n.profileStatRides, value: '${value.rides}'),
                   Gap.md,
-                  _Stat(label: 'Food', value: '${value.foodOrders}'),
+                  _Stat(label: l10n.profileStatFood, value: '${value.foodOrders}'),
                   Gap.md,
-                  _Stat(label: 'Parcels', value: '${value.parcels}'),
+                  _Stat(label: l10n.profileStatParcels, value: '${value.parcels}'),
                 ],
               ),
             ),
@@ -90,10 +91,10 @@ class ProfileScreen extends ConsumerWidget {
                 children: [
                   ListTile(
                     leading: const Icon(Icons.account_balance_wallet_outlined),
-                    title: const Text('Wallet & payments'),
+                    title: Text(l10n.profileWallet),
                     subtitle: Text(
                       summary.value == null
-                          ? 'Balance and payment history'
+                          ? l10n.profileWalletSubtitleEmpty
                           : fmt.money(
                               summary.value!.walletBalance,
                               currency: summary.value!.currency,
@@ -105,23 +106,23 @@ class ProfileScreen extends ConsumerWidget {
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.local_offer_outlined),
-                    title: const Text('Promotions'),
+                    title: Text(l10n.profilePromotions),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/promotions'),
                   ),
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.bookmark_outline),
-                    title: const Text('Saved places'),
+                    title: Text(l10n.profileSavedPlaces),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/profile/places'),
                   ),
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.shield_outlined),
-                    title: const Text('Shared-ride safety'),
+                    title: Text(l10n.profileSharedRideSafety),
                     subtitle: Text(
-                      user.sharedRidePrefs?.genderPreference.label ?? 'Not set',
+                      user.sharedRidePrefs?.genderPreference.label ?? l10n.profileNotSet,
                     ),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/profile/safety'),
@@ -129,7 +130,7 @@ class ProfileScreen extends ConsumerWidget {
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.notifications_none_rounded),
-                    title: const Text('Notifications'),
+                    title: Text(l10n.profileNotifications),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/notifications'),
                   ),
@@ -155,14 +156,14 @@ class ProfileScreen extends ConsumerWidget {
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.help_outline_rounded),
-                    title: const Text('Help & support'),
+                    title: Text(l10n.profileHelpSupport),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/support'),
                   ),
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.support_agent_outlined),
-                    title: const Text('Your support tickets'),
+                    title: Text(l10n.profileSupportTickets),
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context.push('/support/tickets'),
                   ),
@@ -174,8 +175,8 @@ class ProfileScreen extends ConsumerWidget {
               Card(
                 child: ListTile(
                   leading: const Icon(Icons.local_taxi_rounded),
-                  title: const Text('Switch to driving'),
-                  subtitle: const Text('Go online and take rides and deliveries'),
+                  title: Text(l10n.profileSwitchToDriving),
+                  subtitle: Text(l10n.profileSwitchToDrivingSubtitle),
                   trailing: const Icon(Icons.chevron_right_rounded),
                   onTap: () => context.go('/driver'),
                 ),
@@ -186,7 +187,7 @@ class ProfileScreen extends ConsumerWidget {
               onPressed: () => _confirmSignOut(context, ref),
               style: OutlinedButton.styleFrom(foregroundColor: AppColors.danger),
               icon: const Icon(Icons.logout_rounded),
-              label: const Text('Sign out'),
+              label: Text(l10n.profileSignOut),
             ),
           ],
         ),
@@ -195,16 +196,20 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Future<void> _confirmSignOut(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign out?'),
-        content: const Text('You will need your phone number and password to sign back in.'),
+        title: Text(l10n.profileSignOutConfirmTitle),
+        content: Text(l10n.profileSignOutConfirmBody),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Stay')),
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.profileStay),
+          ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Sign out'),
+            child: Text(l10n.profileSignOut),
           ),
         ],
       ),

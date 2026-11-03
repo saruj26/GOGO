@@ -92,5 +92,25 @@
   "otpTooManyAttempts": "Too many incorrect attempts. Request a new code.",
 
   "nameEntryTitle": "What's your name?",
-  "nameEntrySubtitle": "Let us know how to properly address you."
+  "nameEntrySubtitle": "Let us know how to properly address you.",
+
+  "profileEditProfile": "Edit profile",
+  "profileStatRides": "Rides",
+  "profileStatFood": "Food",
+  "profileStatParcels": "Parcels",
+  "profileWallet": "Wallet & payments",
+  "profileWalletSubtitleEmpty": "Balance and payment history",
+  "profilePromotions": "Promotions",
+  "profileSavedPlaces": "Saved places",
+  "profileSharedRideSafety": "Shared-ride safety",
+  "profileNotSet": "Not set",
+  "profileNotifications": "Notifications",
+  "profileHelpSupport": "Help & support",
+  "profileSupportTickets": "Your support tickets",
+  "profileSwitchToDriving": "Switch to driving",
+  "profileSwitchToDrivingSubtitle": "Go online and take rides and deliveries",
+  "profileSignOut": "Sign out",
+  "profileSignOutConfirmTitle": "Sign out?",
+  "profileSignOutConfirmBody": "You will need your phone number and password to sign back in.",
+  "profileStay": "Stay"
 }

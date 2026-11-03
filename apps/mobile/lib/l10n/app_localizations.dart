@@ -513,6 +513,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let us know how to properly address you.'**
   String get nameEntrySubtitle;
+
+  /// No description provided for @profileEditProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get profileEditProfile;
+
+  /// No description provided for @profileStatRides.
+  ///
+  /// In en, this message translates to:
+  /// **'Rides'**
+  String get profileStatRides;
+
+  /// No description provided for @profileStatFood.
+  ///
+  /// In en, this message translates to:
+  /// **'Food'**
+  String get profileStatFood;
+
+  /// No description provided for @profileStatParcels.
+  ///
+  /// In en, this message translates to:
+  /// **'Parcels'**
+  String get profileStatParcels;
+
+  /// No description provided for @profileWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet & payments'**
+  String get profileWallet;
+
+  /// No description provided for @profileWalletSubtitleEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance and payment history'**
+  String get profileWalletSubtitleEmpty;
+
+  /// No description provided for @profilePromotions.
+  ///
+  /// In en, this message translates to:
+  /// **'Promotions'**
+  String get profilePromotions;
+
+  /// No description provided for @profileSavedPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved places'**
+  String get profileSavedPlaces;
+
+  /// No description provided for @profileSharedRideSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared-ride safety'**
+  String get profileSharedRideSafety;
+
+  /// No description provided for @profileNotSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get profileNotSet;
+
+  /// No description provided for @profileNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get profileNotifications;
+
+  /// No description provided for @profileHelpSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & support'**
+  String get profileHelpSupport;
+
+  /// No description provided for @profileSupportTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Your support tickets'**
+  String get profileSupportTickets;
+
+  /// No description provided for @profileSwitchToDriving.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to driving'**
+  String get profileSwitchToDriving;
+
+  /// No description provided for @profileSwitchToDrivingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Go online and take rides and deliveries'**
+  String get profileSwitchToDrivingSubtitle;
+
+  /// No description provided for @profileSignOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get profileSignOut;
+
+  /// No description provided for @profileSignOutConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out?'**
+  String get profileSignOutConfirmTitle;
+
+  /// No description provided for @profileSignOutConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will need your phone number and password to sign back in.'**
+  String get profileSignOutConfirmBody;
+
+  /// No description provided for @profileStay.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay'**
+  String get profileStay;
 }
 
 class _AppLocalizationsDelegate

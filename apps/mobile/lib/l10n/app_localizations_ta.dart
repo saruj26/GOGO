@@ -233,4 +233,63 @@ class AppLocalizationsTa extends AppLocalizations {
   @override
   String get nameEntrySubtitle =>
       'உங்களை முறையாக அழைக்க எங்களுக்குத் தெரியப்படுத்துங்கள்.';
+
+  @override
+  String get profileEditProfile => 'சுயவிவரத்தைத் திருத்து';
+
+  @override
+  String get profileStatRides => 'சவாரிகள்';
+
+  @override
+  String get profileStatFood => 'உணவு';
+
+  @override
+  String get profileStatParcels => 'பார்சல்கள்';
+
+  @override
+  String get profileWallet => 'பணப்பை மற்றும் கட்டணங்கள்';
+
+  @override
+  String get profileWalletSubtitleEmpty => 'இருப்பு மற்றும் கட்டண வரலாறு';
+
+  @override
+  String get profilePromotions => 'சலுகைகள்';
+
+  @override
+  String get profileSavedPlaces => 'சேமித்த இடங்கள்';
+
+  @override
+  String get profileSharedRideSafety => 'பகிர்வு சவாரி பாதுகாப்பு';
+
+  @override
+  String get profileNotSet => 'அமைக்கப்படவில்லை';
+
+  @override
+  String get profileNotifications => 'அறிவிப்புகள்';
+
+  @override
+  String get profileHelpSupport => 'உதவி மற்றும் ஆதரவு';
+
+  @override
+  String get profileSupportTickets => 'உங்கள் ஆதரவு டிக்கெட்டுகள்';
+
+  @override
+  String get profileSwitchToDriving => 'ஓட்டுநராக மாறு';
+
+  @override
+  String get profileSwitchToDrivingSubtitle =>
+      'ஆன்லைனில் சென்று சவாரிகள் மற்றும் டெலிவரிகளை எடுங்கள்';
+
+  @override
+  String get profileSignOut => 'வெளியேறு';
+
+  @override
+  String get profileSignOutConfirmTitle => 'வெளியேற வேண்டுமா?';
+
+  @override
+  String get profileSignOutConfirmBody =>
+      'மீண்டும் உள்நுழைய உங்கள் தொலைபேசி எண் மற்றும் கடவுச்சொல் தேவைப்படும்.';
+
+  @override
+  String get profileStay => 'இருக்கவும்';
 }
