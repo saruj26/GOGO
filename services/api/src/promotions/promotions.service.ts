@@ -150,4 +150,52 @@ export class PromotionsService {
       },
     });
   }
+
+  /**
+   * Records that a customer entered a promotion's code so it starts showing
+   * up in their available-promotions list. This never uses the promotion --
+   * `redeem` still runs at checkout as before -- it only grants visibility,
+   * which matters for a non-public code (e.g. referral) that `resolve` would
+   * otherwise never need to be told about ahead of a booking.
+   *
+   * Idempotent: claiming the same code twice is a no-op, not an error, since
+   * from the customer's point of view both end in "the offer is available".
+   */
+  async claim(code: string, userId: string): Promise<void> {
+    const now = new Date();
+    const promotion = await this.prisma.promotion.findFirst({
+      where: {
+        code: code.toUpperCase(),
+        active: true,
+        validFrom: { lte: now },
+        validTo: { gte: now },
+      },
+      select: { id: true, perUserLimit: true, usageLimit: true, usedCount: true },
+    });
+
+    if (!promotion) {
+      throw new DomainError(DomainErrorCode.PROMOTION_INVALID, 'That promotion code is not valid.');
+    }
+
+    if (promotion.usageLimit !== null && promotion.usedCount >= promotion.usageLimit) {
+      throw new DomainError(DomainErrorCode.PROMOTION_INVALID, 'This promotion has ended.');
+    }
+
+    const alreadyUsed = await this.prisma.promotionRedemption.count({
+      where: { promotionId: promotion.id, userId },
+    });
+
+    if (alreadyUsed >= promotion.perUserLimit) {
+      throw new DomainError(
+        DomainErrorCode.PROMOTION_INVALID,
+        'You have already used this promotion.',
+      );
+    }
+
+    await this.prisma.promotionClaim.upsert({
+      where: { promotionId_userId: { promotionId: promotion.id, userId } },
+      create: { promotionId: promotion.id, userId },
+      update: {},
+    });
+  }
 }

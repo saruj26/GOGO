@@ -18,6 +18,7 @@ import '../../features/food/restaurant_screen.dart';
 import '../../features/food/restaurants_screen.dart';
 import '../../features/history/activity_screen.dart';
 import '../../features/home/home_screen.dart';
+import '../../features/inbox/inbox_screen.dart';
 import '../../features/notifications/notifications_screen.dart';
 import '../../features/onboarding/name_entry_screen.dart';
 import '../../features/onboarding/otp_screen.dart';
@@ -226,6 +227,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootKey,
         path: '/notifications',
         builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootKey,
+        path: '/inbox',
+        builder: (context, state) => const InboxScreen(),
       ),
       GoRoute(
         parentNavigatorKey: _rootKey,

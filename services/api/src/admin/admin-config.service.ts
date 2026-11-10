@@ -232,6 +232,7 @@ export class AdminConfigService {
           validFrom,
           validTo,
           active: true,
+          isPublic: dto.isPublic ?? true,
           // `usedCount` is not settable: it starts at zero and only the
           // redemption path moves it.
         },

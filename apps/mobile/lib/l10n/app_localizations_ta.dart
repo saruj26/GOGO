@@ -292,4 +292,141 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String get profileStay => 'இருக்கவும்';
+
+  @override
+  String get inboxTitle => 'இன்பாக்ஸ்';
+
+  @override
+  String get inboxTabAll => 'அனைத்தும்';
+
+  @override
+  String get inboxTabOffers => 'சலுகைகள்';
+
+  @override
+  String get inboxTabSupport => 'ஆதரவு';
+
+  @override
+  String get inboxTabUpdates => 'புதுப்பிப்புகள்';
+
+  @override
+  String get inboxAddOfferCode => 'புதிய சலுகைக் குறியீட்டைச் சேர்';
+
+  @override
+  String get inboxOfferCodeDialogTitle => 'சலுகைக் குறியீட்டை உள்ளிடவும்';
+
+  @override
+  String get inboxOfferCodeHint => 'உதா. WELCOME20';
+
+  @override
+  String get inboxOfferCodeApply => 'செயல்படுத்து';
+
+  @override
+  String get inboxOfferCodeApplied => 'சலுகை உங்கள் கணக்கில் சேர்க்கப்பட்டது.';
+
+  @override
+  String get inboxSectionOffers => 'சலுகைகள்';
+
+  @override
+  String get inboxSectionActivity => 'செயல்பாடு';
+
+  @override
+  String get inboxEmptyAllTitle => 'இதுவரை ஏதுமில்லை';
+
+  @override
+  String get inboxEmptyAllMessage =>
+      'உங்கள் சவாரிகள், ஆர்டர்கள் மற்றும் பார்சல்கள் பற்றிய சலுகைகள் மற்றும் புதுப்பிப்புகள் இங்கே தோன்றும்.';
+
+  @override
+  String get inboxEmptyOffersTitle => 'இப்போது சலுகைகள் இல்லை';
+
+  @override
+  String get inboxEmptyOffersMessage =>
+      'ஒரு சலுகை கிடைக்கும்போது அது இங்கே தோன்றும்.';
+
+  @override
+  String get inboxEmptySupportTitle => 'ஆதரவு செய்திகள் இல்லை';
+
+  @override
+  String get inboxEmptySupportMessage =>
+      'உங்கள் ஆதரவு டிக்கெட்டுகளுக்கான பதில்கள் இங்கே தோன்றும்.';
+
+  @override
+  String get inboxEmptyUpdatesTitle => 'புதுப்பிப்புகள் இல்லை';
+
+  @override
+  String get inboxEmptyUpdatesMessage =>
+      'உங்கள் சவாரிகள், ஆர்டர்கள் மற்றும் பார்சல்கள் பற்றிய புதுப்பிப்புகள் இங்கே தோன்றும்.';
+
+  @override
+  String get notificationsTitle => 'அறிவிப்புகள்';
+
+  @override
+  String get notificationsMarkAllRead => 'அனைத்தையும் படித்ததாகக் குறி';
+
+  @override
+  String get notificationsPushNotice =>
+      'புஷ் அறிவிப்புகள் இன்னும் இயக்கப்படவில்லை, எனவே நீங்கள் ஆப்ஸைத் திறக்கும்போது மட்டுமே இவை தோன்றும். புதுப்பிக்க கீழே இழுக்கவும்.';
+
+  @override
+  String get notificationsEmptyTitle => 'இதுவரை ஏதுமில்லை';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'உங்கள் சவாரிகள், ஆர்டர்கள் மற்றும் பார்சல்கள் பற்றிய புதுப்பிப்புகள் இங்கே தோன்றும்.';
+
+  @override
+  String get promotionsTitle => 'சலுகைகள்';
+
+  @override
+  String get promotionsEmptyTitle => 'இப்போது சலுகைகள் இல்லை';
+
+  @override
+  String get promotionsEmptyMessage =>
+      'ஒரு சலுகை கிடைக்கும்போது அது இங்கே தோன்றும்.';
+
+  @override
+  String promotionsCodeCopied(String code) {
+    return '$code நகலெடுக்கப்பட்டது';
+  }
+
+  @override
+  String promotionsPercentOff(String value) {
+    return '$value% தள்ளுபடி';
+  }
+
+  @override
+  String promotionsAmountOff(String amount) {
+    return '$amount தள்ளுபடி';
+  }
+
+  @override
+  String promotionsMinSpend(String amount) {
+    return 'குறைந்தபட்ச செலவு $amount';
+  }
+
+  @override
+  String promotionsUpTo(String amount) {
+    return '$amount வரை தள்ளுபடி';
+  }
+
+  @override
+  String promotionsForServices(String services) {
+    return '$services சேவைகளுக்கு';
+  }
+
+  @override
+  String promotionsExpires(String date) {
+    return '$date அன்று காலாவதியாகும்';
+  }
+
+  @override
+  String promotionsUsesLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count முறைகள் மீதம்',
+      one: '1 முறை மீதம்',
+    );
+    return '$_temp0';
+  }
 }

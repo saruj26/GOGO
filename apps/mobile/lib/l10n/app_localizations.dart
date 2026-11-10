@@ -627,6 +627,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stay'**
   String get profileStay;
+
+  /// No description provided for @inboxTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inbox'**
+  String get inboxTitle;
+
+  /// No description provided for @inboxTabAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get inboxTabAll;
+
+  /// No description provided for @inboxTabOffers.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get inboxTabOffers;
+
+  /// No description provided for @inboxTabSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get inboxTabSupport;
+
+  /// No description provided for @inboxTabUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates'**
+  String get inboxTabUpdates;
+
+  /// No description provided for @inboxAddOfferCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new offer code'**
+  String get inboxAddOfferCode;
+
+  /// No description provided for @inboxOfferCodeDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter offer code'**
+  String get inboxOfferCodeDialogTitle;
+
+  /// No description provided for @inboxOfferCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. WELCOME20'**
+  String get inboxOfferCodeHint;
+
+  /// No description provided for @inboxOfferCodeApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get inboxOfferCodeApply;
+
+  /// No description provided for @inboxOfferCodeApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer added to your account.'**
+  String get inboxOfferCodeApplied;
+
+  /// No description provided for @inboxSectionOffers.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get inboxSectionOffers;
+
+  /// No description provided for @inboxSectionActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get inboxSectionActivity;
+
+  /// No description provided for @inboxEmptyAllTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing yet'**
+  String get inboxEmptyAllTitle;
+
+  /// No description provided for @inboxEmptyAllMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers and updates about your rides, orders and parcels will appear here.'**
+  String get inboxEmptyAllMessage;
+
+  /// No description provided for @inboxEmptyOffersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No offers right now'**
+  String get inboxEmptyOffersTitle;
+
+  /// No description provided for @inboxEmptyOffersMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'When you have an offer available it will show up here.'**
+  String get inboxEmptyOffersMessage;
+
+  /// No description provided for @inboxEmptySupportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No support messages'**
+  String get inboxEmptySupportTitle;
+
+  /// No description provided for @inboxEmptySupportMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Replies to your support tickets will appear here.'**
+  String get inboxEmptySupportMessage;
+
+  /// No description provided for @inboxEmptyUpdatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No updates yet'**
+  String get inboxEmptyUpdatesTitle;
+
+  /// No description provided for @inboxEmptyUpdatesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates about your rides, orders and parcels will appear here.'**
+  String get inboxEmptyUpdatesMessage;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notificationsMarkAllRead;
+
+  /// No description provided for @notificationsPushNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications are not switched on yet, so these appear only when you open the app. Pull down to refresh.'**
+  String get notificationsPushNotice;
+
+  /// No description provided for @notificationsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing yet'**
+  String get notificationsEmptyTitle;
+
+  /// No description provided for @notificationsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates about your rides, orders and parcels will appear here.'**
+  String get notificationsEmptyMessage;
+
+  /// No description provided for @promotionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Promotions'**
+  String get promotionsTitle;
+
+  /// No description provided for @promotionsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No promotions right now'**
+  String get promotionsEmptyTitle;
+
+  /// No description provided for @promotionsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'When you have an offer available it will show up here.'**
+  String get promotionsEmptyMessage;
+
+  /// No description provided for @promotionsCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'{code} copied'**
+  String promotionsCodeCopied(String code);
+
+  /// No description provided for @promotionsPercentOff.
+  ///
+  /// In en, this message translates to:
+  /// **'{value}% off'**
+  String promotionsPercentOff(String value);
+
+  /// No description provided for @promotionsAmountOff.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} off'**
+  String promotionsAmountOff(String amount);
+
+  /// No description provided for @promotionsMinSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum spend {amount}'**
+  String promotionsMinSpend(String amount);
+
+  /// No description provided for @promotionsUpTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {amount} off'**
+  String promotionsUpTo(String amount);
+
+  /// No description provided for @promotionsForServices.
+  ///
+  /// In en, this message translates to:
+  /// **'For {services}'**
+  String promotionsForServices(String services);
+
+  /// No description provided for @promotionsExpires.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires {date}'**
+  String promotionsExpires(String date);
+
+  /// No description provided for @promotionsUsesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one {1 use left} other {{count} uses left}}'**
+  String promotionsUsesLeft(int count);
 }
 
 class _AppLocalizationsDelegate

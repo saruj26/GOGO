@@ -291,4 +291,141 @@ class AppLocalizationsSi extends AppLocalizations {
 
   @override
   String get profileStay => 'රැඳී සිටින්න';
+
+  @override
+  String get inboxTitle => 'එන ලිපි';
+
+  @override
+  String get inboxTabAll => 'සියල්ල';
+
+  @override
+  String get inboxTabOffers => 'දීමනා';
+
+  @override
+  String get inboxTabSupport => 'සහාය';
+
+  @override
+  String get inboxTabUpdates => 'යාවත්කාල';
+
+  @override
+  String get inboxAddOfferCode => 'නව දීමනා කේතයක් එක් කරන්න';
+
+  @override
+  String get inboxOfferCodeDialogTitle => 'දීමනා කේතය ඇතුළත් කරන්න';
+
+  @override
+  String get inboxOfferCodeHint => 'උදා. WELCOME20';
+
+  @override
+  String get inboxOfferCodeApply => 'යොදන්න';
+
+  @override
+  String get inboxOfferCodeApplied => 'දීමනාව ඔබේ ගිණුමට එකතු කරන ලදි.';
+
+  @override
+  String get inboxSectionOffers => 'දීමනා';
+
+  @override
+  String get inboxSectionActivity => 'ක්‍රියාකාරකම්';
+
+  @override
+  String get inboxEmptyAllTitle => 'තවම කිසිවක් නැත';
+
+  @override
+  String get inboxEmptyAllMessage =>
+      'ඔබේ සවාරි, ඇණවුම් සහ පාර්සල් පිළිබඳ දීමනා සහ යාවත්කාල මෙහි දිස්වනු ඇත.';
+
+  @override
+  String get inboxEmptyOffersTitle => 'දැනට දීමනා නැත';
+
+  @override
+  String get inboxEmptyOffersMessage =>
+      'දීමනාවක් ලබාගත හැකි විට එය මෙහි දිස්වනු ඇත.';
+
+  @override
+  String get inboxEmptySupportTitle => 'සහාය පණිවිඩ නැත';
+
+  @override
+  String get inboxEmptySupportMessage =>
+      'ඔබේ සහාය ටිකට්පත්වලට පිළිතුරු මෙහි දිස්වනු ඇත.';
+
+  @override
+  String get inboxEmptyUpdatesTitle => 'තවම යාවත්කාල නැත';
+
+  @override
+  String get inboxEmptyUpdatesMessage =>
+      'ඔබේ සවාරි, ඇණවුම් සහ පාර්සල් පිළිබඳ යාවත්කාල මෙහි දිස්වනු ඇත.';
+
+  @override
+  String get notificationsTitle => 'දැනුම්දීම්';
+
+  @override
+  String get notificationsMarkAllRead => 'සියල්ල කියවූ ලෙස සලකුණු කරන්න';
+
+  @override
+  String get notificationsPushNotice =>
+      'තල්ලු දැනුම්දීම් තවම සක්‍රිය කර නැත, එබැවින් ඔබ යෙදුම විවෘත කරන විට පමණක් මේවා දිස්වේ. නැවුම් කිරීමට පහළට ඇද දමන්න.';
+
+  @override
+  String get notificationsEmptyTitle => 'තවම කිසිවක් නැත';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'ඔබේ සවාරි, ඇණවුම් සහ පාර්සල් පිළිබඳ යාවත්කාල මෙහි දිස්වනු ඇත.';
+
+  @override
+  String get promotionsTitle => 'ප්‍රවර්ධන';
+
+  @override
+  String get promotionsEmptyTitle => 'දැනට ප්‍රවර්ධන නැත';
+
+  @override
+  String get promotionsEmptyMessage =>
+      'දීමනාවක් ලබාගත හැකි විට එය මෙහි දිස්වනු ඇත.';
+
+  @override
+  String promotionsCodeCopied(String code) {
+    return '$code පිටපත් කරන ලදි';
+  }
+
+  @override
+  String promotionsPercentOff(String value) {
+    return '$value% වට්ටම්';
+  }
+
+  @override
+  String promotionsAmountOff(String amount) {
+    return '$amount වට්ටම්';
+  }
+
+  @override
+  String promotionsMinSpend(String amount) {
+    return 'අවම වියදම $amount';
+  }
+
+  @override
+  String promotionsUpTo(String amount) {
+    return '$amount දක්වා වට්ටම්';
+  }
+
+  @override
+  String promotionsForServices(String services) {
+    return '$services සඳහා';
+  }
+
+  @override
+  String promotionsExpires(String date) {
+    return '$date දින කල් ඉකුත් වේ';
+  }
+
+  @override
+  String promotionsUsesLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'භාවිත $countක් ඉතිරිය',
+      one: 'භාවිත 1ක් ඉතිරිය',
+    );
+    return '$_temp0';
+  }
 }

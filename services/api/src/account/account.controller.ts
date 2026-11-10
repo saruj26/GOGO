@@ -1,10 +1,12 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
 import { ServiceType } from '@prisma/client';
 import { AuthenticatedUser } from '../auth/auth.constants';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { CursorPaginationDto } from '../common/dto/pagination.dto';
 import { AccountService } from './account.service';
+import { ClaimPromotionDto } from './dto/account.dto';
 
 @ApiTags('account')
 @ApiBearerAuth()
@@ -41,5 +43,17 @@ export class AccountController {
   })
   promotions(@CurrentUser() user: AuthenticatedUser) {
     return this.account.availablePromotions(user.id);
+  }
+
+  @Post('promotions/claim')
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Claim a promotion code',
+    description:
+      'Makes a non-public promotion (e.g. a referral code) show up in your available-promotions list. Does not use it -- that still happens at checkout.',
+  })
+  claimPromotion(@CurrentUser() user: AuthenticatedUser, @Body() dto: ClaimPromotionDto) {
+    return this.account.claimPromotion(user.id, dto.code);
   }
 }

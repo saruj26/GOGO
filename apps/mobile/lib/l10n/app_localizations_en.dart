@@ -296,4 +296,141 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileStay => 'Stay';
+
+  @override
+  String get inboxTitle => 'Inbox';
+
+  @override
+  String get inboxTabAll => 'All';
+
+  @override
+  String get inboxTabOffers => 'Offers';
+
+  @override
+  String get inboxTabSupport => 'Support';
+
+  @override
+  String get inboxTabUpdates => 'Updates';
+
+  @override
+  String get inboxAddOfferCode => 'Add new offer code';
+
+  @override
+  String get inboxOfferCodeDialogTitle => 'Enter offer code';
+
+  @override
+  String get inboxOfferCodeHint => 'e.g. WELCOME20';
+
+  @override
+  String get inboxOfferCodeApply => 'Apply';
+
+  @override
+  String get inboxOfferCodeApplied => 'Offer added to your account.';
+
+  @override
+  String get inboxSectionOffers => 'Offers';
+
+  @override
+  String get inboxSectionActivity => 'Activity';
+
+  @override
+  String get inboxEmptyAllTitle => 'Nothing yet';
+
+  @override
+  String get inboxEmptyAllMessage =>
+      'Offers and updates about your rides, orders and parcels will appear here.';
+
+  @override
+  String get inboxEmptyOffersTitle => 'No offers right now';
+
+  @override
+  String get inboxEmptyOffersMessage =>
+      'When you have an offer available it will show up here.';
+
+  @override
+  String get inboxEmptySupportTitle => 'No support messages';
+
+  @override
+  String get inboxEmptySupportMessage =>
+      'Replies to your support tickets will appear here.';
+
+  @override
+  String get inboxEmptyUpdatesTitle => 'No updates yet';
+
+  @override
+  String get inboxEmptyUpdatesMessage =>
+      'Updates about your rides, orders and parcels will appear here.';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsMarkAllRead => 'Mark all read';
+
+  @override
+  String get notificationsPushNotice =>
+      'Push notifications are not switched on yet, so these appear only when you open the app. Pull down to refresh.';
+
+  @override
+  String get notificationsEmptyTitle => 'Nothing yet';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'Updates about your rides, orders and parcels will appear here.';
+
+  @override
+  String get promotionsTitle => 'Promotions';
+
+  @override
+  String get promotionsEmptyTitle => 'No promotions right now';
+
+  @override
+  String get promotionsEmptyMessage =>
+      'When you have an offer available it will show up here.';
+
+  @override
+  String promotionsCodeCopied(String code) {
+    return '$code copied';
+  }
+
+  @override
+  String promotionsPercentOff(String value) {
+    return '$value% off';
+  }
+
+  @override
+  String promotionsAmountOff(String amount) {
+    return '$amount off';
+  }
+
+  @override
+  String promotionsMinSpend(String amount) {
+    return 'Minimum spend $amount';
+  }
+
+  @override
+  String promotionsUpTo(String amount) {
+    return 'Up to $amount off';
+  }
+
+  @override
+  String promotionsForServices(String services) {
+    return 'For $services';
+  }
+
+  @override
+  String promotionsExpires(String date) {
+    return 'Expires $date';
+  }
+
+  @override
+  String promotionsUsesLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count uses left',
+      one: '1 use left',
+    );
+    return '$_temp0';
+  }
 }

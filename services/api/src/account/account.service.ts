@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Prisma, ServiceType } from '@prisma/client';
 import { CursorPaginationDto, buildCursorPage } from '../common/dto/pagination.dto';
 import { PrismaService } from '../prisma/prisma.service';
+import { PromotionsService } from '../promotions/promotions.service';
 
 /**
  * The customer's own money and promotions.
@@ -12,7 +13,10 @@ import { PrismaService } from '../prisma/prisma.service';
  */
 @Injectable()
 export class AccountService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly promotions: PromotionsService,
+  ) {}
 
   async wallet(userId: string, pagination: CursorPaginationDto) {
     const wallet = await this.prisma.wallet.findUnique({
@@ -122,6 +126,9 @@ export class AccountService {
         active: true,
         validFrom: { lte: now },
         validTo: { gte: now },
+        // A non-public (code-only) promotion only shows up once this
+        // customer has claimed it by entering its code.
+        OR: [{ isPublic: true }, { claims: { some: { userId } } }],
       },
       orderBy: { validTo: 'asc' },
       select: {
@@ -168,6 +175,16 @@ export class AccountService {
         expiresAt: p.validTo,
         usesLeft: p.perUserLimit - (usedByMe.get(p.id) ?? 0),
       }));
+  }
+
+  /**
+   * Claims a promotion code on this customer's behalf, then returns their
+   * refreshed available-promotions list -- the point of entering a code is
+   * to see it show up, so the response hands back exactly that.
+   */
+  async claimPromotion(userId: string, code: string) {
+    await this.promotions.claim(code, userId);
+    return this.availablePromotions(userId);
   }
 
   /** Counts for the home screen, in one round trip each. */

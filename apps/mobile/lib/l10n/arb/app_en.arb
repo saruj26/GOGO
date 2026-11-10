@@ -112,5 +112,68 @@
   "profileSignOut": "Sign out",
   "profileSignOutConfirmTitle": "Sign out?",
   "profileSignOutConfirmBody": "You will need your phone number and password to sign back in.",
-  "profileStay": "Stay"
+  "profileStay": "Stay",
+
+  "inboxTitle": "Inbox",
+  "inboxTabAll": "All",
+  "inboxTabOffers": "Offers",
+  "inboxTabSupport": "Support",
+  "inboxTabUpdates": "Updates",
+  "inboxAddOfferCode": "Add new offer code",
+  "inboxOfferCodeDialogTitle": "Enter offer code",
+  "inboxOfferCodeHint": "e.g. WELCOME20",
+  "inboxOfferCodeApply": "Apply",
+  "inboxOfferCodeApplied": "Offer added to your account.",
+  "inboxSectionOffers": "Offers",
+  "inboxSectionActivity": "Activity",
+  "inboxEmptyAllTitle": "Nothing yet",
+  "inboxEmptyAllMessage": "Offers and updates about your rides, orders and parcels will appear here.",
+  "inboxEmptyOffersTitle": "No offers right now",
+  "inboxEmptyOffersMessage": "When you have an offer available it will show up here.",
+  "inboxEmptySupportTitle": "No support messages",
+  "inboxEmptySupportMessage": "Replies to your support tickets will appear here.",
+  "inboxEmptyUpdatesTitle": "No updates yet",
+  "inboxEmptyUpdatesMessage": "Updates about your rides, orders and parcels will appear here.",
+
+  "notificationsTitle": "Notifications",
+  "notificationsMarkAllRead": "Mark all read",
+  "notificationsPushNotice": "Push notifications are not switched on yet, so these appear only when you open the app. Pull down to refresh.",
+  "notificationsEmptyTitle": "Nothing yet",
+  "notificationsEmptyMessage": "Updates about your rides, orders and parcels will appear here.",
+
+  "promotionsTitle": "Promotions",
+  "promotionsEmptyTitle": "No promotions right now",
+  "promotionsEmptyMessage": "When you have an offer available it will show up here.",
+  "promotionsCodeCopied": "{code} copied",
+  "@promotionsCodeCopied": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "promotionsPercentOff": "{value}% off",
+  "@promotionsPercentOff": {
+    "placeholders": { "value": { "type": "String" } }
+  },
+  "promotionsAmountOff": "{amount} off",
+  "@promotionsAmountOff": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "promotionsMinSpend": "Minimum spend {amount}",
+  "@promotionsMinSpend": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "promotionsUpTo": "Up to {amount} off",
+  "@promotionsUpTo": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "promotionsForServices": "For {services}",
+  "@promotionsForServices": {
+    "placeholders": { "services": { "type": "String" } }
+  },
+  "promotionsExpires": "Expires {date}",
+  "@promotionsExpires": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "promotionsUsesLeft": "{count, plural, one {1 use left} other {{count} uses left}}",
+  "@promotionsUsesLeft": {
+    "placeholders": { "count": { "type": "int" } }
+  }
 }

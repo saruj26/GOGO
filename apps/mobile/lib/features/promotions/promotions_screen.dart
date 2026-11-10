@@ -6,6 +6,7 @@ import '../../core/format/format.dart' as fmt;
 import '../../core/format/labels.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/states.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/account.dart';
 import '../payments/wallet_providers.dart';
 
@@ -20,17 +21,18 @@ class PromotionsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final promotions = ref.watch(promotionsProvider);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Promotions')),
+      appBar: AppBar(title: Text(l10n.promotionsTitle)),
       body: promotions.when(
         loading: () => const LoadingState(),
         error: (error, _) =>
             ErrorState(error: error, onRetry: () => ref.invalidate(promotionsProvider)),
         data: (offers) => offers.isEmpty
-            ? const EmptyState(
-                title: 'No promotions right now',
-                message: 'When you have an offer available it will show up here.',
+            ? EmptyState(
+                title: l10n.promotionsEmptyTitle,
+                message: l10n.promotionsEmptyMessage,
                 icon: Icons.local_offer_outlined,
               )
             : RefreshIndicator(
@@ -55,6 +57,7 @@ class _PromotionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Card(
       child: Padding(
@@ -67,8 +70,10 @@ class _PromotionCard extends StatelessWidget {
                 Expanded(child: Text(promotion.name, style: theme.textTheme.titleMedium)),
                 Text(
                   promotion.isPercent
-                      ? '${promotion.value.replaceAll(RegExp(r'\.00$'), '')}% off'
-                      : '${fmt.money(promotion.value)} off',
+                      ? l10n.promotionsPercentOff(
+                          promotion.value.replaceAll(RegExp(r'\.00$'), ''),
+                        )
+                      : l10n.promotionsAmountOff(fmt.money(promotion.value)),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: AppColors.success,
@@ -85,7 +90,7 @@ class _PromotionCard extends StatelessWidget {
               onTap: () {
                 Clipboard.setData(ClipboardData(text: promotion.code));
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${promotion.code} copied')),
+                  SnackBar(content: Text(l10n.promotionsCodeCopied(promotion.code))),
                 );
               },
               borderRadius: BorderRadius.circular(10),
@@ -118,13 +123,16 @@ class _PromotionCard extends StatelessWidget {
             Text(
               [
                 if (promotion.minOrderAmount != '0.00')
-                  'Minimum spend ${fmt.money(promotion.minOrderAmount)}',
+                  l10n.promotionsMinSpend(fmt.money(promotion.minOrderAmount)),
                 if (promotion.maxDiscount != null)
-                  'Up to ${fmt.money(promotion.maxDiscount)} off',
+                  l10n.promotionsUpTo(fmt.money(promotion.maxDiscount)),
                 if (promotion.appliesTo != null)
-                  'For ${promotion.appliesTo!.map((s) => labelFor(serviceLabel, s)).join(', ')}',
-                if (promotion.expiresAt != null) 'Expires ${fmt.dateOnly(promotion.expiresAt)}',
-                '${promotion.usesLeft} ${promotion.usesLeft == 1 ? 'use' : 'uses'} left',
+                  l10n.promotionsForServices(
+                    promotion.appliesTo!.map((s) => labelFor(serviceLabel, s)).join(', '),
+                  ),
+                if (promotion.expiresAt != null)
+                  l10n.promotionsExpires(fmt.dateOnly(promotion.expiresAt)),
+                l10n.promotionsUsesLeft(promotion.usesLeft),
               ].join(' · '),
               style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline),
             ),

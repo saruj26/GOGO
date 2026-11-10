@@ -39,6 +39,20 @@ class AccountApi {
         .map(AvailablePromotion.fromJson)
         .toList(growable: false);
   }
+
+  /// Claims a promotion code, making it show up in [promotions] if it
+  /// wasn't already (e.g. a referral code). Does not use the promotion --
+  /// that still happens at checkout, same as any other code.
+  Future<List<AvailablePromotion>> claimPromotion(String code) async {
+    final data = await _client.post<List<dynamic>>(
+      '/account/promotions/claim',
+      body: {'code': code},
+    );
+    return data
+        .whereType<Map<String, dynamic>>()
+        .map(AvailablePromotion.fromJson)
+        .toList(growable: false);
+  }
 }
 
 class NotificationsApi {

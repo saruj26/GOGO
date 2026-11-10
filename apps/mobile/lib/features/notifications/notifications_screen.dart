@@ -5,6 +5,7 @@ import '../../core/format/format.dart' as fmt;
 import '../../core/providers.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/states.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/account.dart';
 import '../../models/common.dart';
 
@@ -27,10 +28,11 @@ class NotificationsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifications = ref.watch(notificationsProvider);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
+        title: Text(l10n.notificationsTitle),
         actions: [
           TextButton(
             onPressed: () async {
@@ -38,7 +40,7 @@ class NotificationsScreen extends ConsumerWidget {
               ref.invalidate(notificationsProvider);
               ref.invalidate(unreadCountProvider);
             },
-            child: const Text('Mark all read'),
+            child: Text(l10n.notificationsMarkAllRead),
           ),
         ],
       ),
@@ -54,16 +56,15 @@ class NotificationsScreen extends ConsumerWidget {
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
             children: [
-              const InfoNote(
+              InfoNote(
                 icon: Icons.notifications_off_outlined,
-                message: 'Push notifications are not switched on yet, so these appear only when '
-                    'you open the app. Pull down to refresh.',
+                message: l10n.notificationsPushNotice,
               ),
               Gap.lg,
               if (page.items.isEmpty)
-                const EmptyState(
-                  title: 'Nothing yet',
-                  message: 'Updates about your rides, orders and parcels will appear here.',
+                EmptyState(
+                  title: l10n.notificationsEmptyTitle,
+                  message: l10n.notificationsEmptyMessage,
                   icon: Icons.notifications_none_rounded,
                 )
               else

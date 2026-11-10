@@ -177,6 +177,14 @@ export class CreatePromotionDto {
 
   @ApiProperty() @IsDateString()
   validTo!: string;
+
+  @ApiPropertyOptional({
+    default: true,
+    description: 'Public promotions are advertised to everyone. Set false for a code-only '
+      + 'promotion (e.g. referral) that only appears once a customer enters the code.',
+  })
+  @IsOptional() @IsBoolean()
+  isPublic?: boolean;
 }
 
 export class UpdatePromotionDto {

@@ -328,6 +328,7 @@ model User {
   matchRequests      SharedRideMatchRequest[]
   payments           Payment[]
   promotionRedeems   PromotionRedemption[]
+  promotionClaims    PromotionClaim[]
   ratingsGiven       Rating[]                 @relation("RatingAuthor")
   ratingsReceived    Rating[]                 @relation("RatingSubject")
   notifications      Notification[]
@@ -1163,14 +1164,37 @@ model Promotion {
   validFrom      DateTime      @map("valid_from") @db.Timestamptz(3)
   validTo        DateTime      @map("valid_to") @db.Timestamptz(3)
   active         Boolean       @default(true)
+  // Public promotions are advertised to every eligible customer. A non-public
+  // one (e.g. a referral or support-issued code) only shows up for a customer
+  // after they claim it by entering the code — see PromotionClaim.
+  isPublic       Boolean       @default(true) @map("is_public")
   createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt      DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   redemptions PromotionRedemption[]
+  claims      PromotionClaim[]
   fareQuotes  FareQuote[]
 
   @@index([active, validFrom, validTo])
   @@map("promotions")
+}
+
+/// Records that a customer entered a non-public promotion's code, so it then
+/// appears in their own available-promotions list. This is separate from
+/// PromotionRedemption, which records actual use at checkout -- claiming a
+/// code does not use it, it only makes it visible.
+model PromotionClaim {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  promotionId String   @map("promotion_id") @db.Uuid
+  userId      String   @map("user_id") @db.Uuid
+  claimedAt   DateTime @default(now()) @map("claimed_at") @db.Timestamptz(3)
+
+  promotion Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([promotionId, userId])
+  @@index([userId])
+  @@map("promotion_claims")
 }
 
 model PromotionRedemption {
