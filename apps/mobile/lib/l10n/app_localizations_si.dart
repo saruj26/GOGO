@@ -273,13 +273,6 @@ class AppLocalizationsSi extends AppLocalizations {
   String get profileSupportTickets => 'ඔබේ සහාය ටිකට්පත්';
 
   @override
-  String get profileSwitchToDriving => 'රියදුරු ලෙස මාරු වන්න';
-
-  @override
-  String get profileSwitchToDrivingSubtitle =>
-      'සබැඳි වී සවාරි සහ බෙදාහැරීම් ගන්න';
-
-  @override
   String get profileSignOut => 'ඉවත් වන්න';
 
   @override
@@ -291,6 +284,22 @@ class AppLocalizationsSi extends AppLocalizations {
 
   @override
   String get profileStay => 'රැඳී සිටින්න';
+
+  @override
+  String get driverAccountTitle => 'ගිණුම';
+
+  @override
+  String get driverAccountVehicle => 'වාහනය';
+
+  @override
+  String get driverAccountNoVehicle => 'වාහන විස්තර නැත';
+
+  @override
+  String get driverNotAuthorizedTitle => 'රියදුරු ගිණුමක් නොවේ';
+
+  @override
+  String get driverNotAuthorizedMessage =>
+      'මෙම ගිණුම රියදුරෙකු ලෙස ලියාපදිංචි කර නැත. Tugo පාරිභෝගික යෙදුම හරහා රියදුරෙකු වීමට අයදුම් කරන්න, නැතහොත් රියදුරු ගිණුමකින් පිවිසෙන්න.';
 
   @override
   String get inboxTitle => 'එන ලිපි';

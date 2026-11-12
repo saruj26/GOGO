@@ -21,9 +21,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    buildFeatures {
+        resValues = true
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "lk.tugo.mobile"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -34,6 +36,24 @@ android {
         // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+    }
+
+    // Two separate installable apps from one codebase — the rider app and the
+    // driver app — distinguished by application id, name and icon. Dart-side
+    // behaviour is picked by which entrypoint ran (lib/main.dart vs
+    // lib/main_driver.dart), read via core/config/app_flavor.dart.
+    flavorDimensions += "app"
+    productFlavors {
+        create("customer") {
+            dimension = "app"
+            applicationId = "lk.tugo.mobile"
+            resValue("string", "app_name", "Tugo")
+        }
+        create("driver") {
+            dimension = "app"
+            applicationId = "lk.tugo.driver"
+            resValue("string", "app_name", "Tugo Driver")
+        }
     }
 
     buildTypes {
@@ -48,6 +68,16 @@ android {
 kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+// google-services.json only lists the customer app's package (lk.tugo.mobile) —
+// the driver app has no Firebase/Google Sign-In client registered yet, which is
+// unrelated to this split. Rather than block driver builds on that, skip the
+// plugin's per-variant check for the driver flavor only.
+tasks.configureEach {
+    if (name.startsWith("process") && name.contains("Driver") && name.endsWith("GoogleServices")) {
+        enabled = false
     }
 }
 

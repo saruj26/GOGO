@@ -107,12 +107,16 @@
   "profileNotifications": "දැනුම්දීම්",
   "profileHelpSupport": "උදව් සහ සහාය",
   "profileSupportTickets": "ඔබේ සහාය ටිකට්පත්",
-  "profileSwitchToDriving": "රියදුරු ලෙස මාරු වන්න",
-  "profileSwitchToDrivingSubtitle": "සබැඳි වී සවාරි සහ බෙදාහැරීම් ගන්න",
   "profileSignOut": "ඉවත් වන්න",
   "profileSignOutConfirmTitle": "ඉවත් වන්නද?",
   "profileSignOutConfirmBody": "නැවත පිවිසීමට ඔබේ දුරකථන අංකය සහ මුරපදය අවශ්‍ය වේ.",
   "profileStay": "රැඳී සිටින්න",
+
+  "driverAccountTitle": "ගිණුම",
+  "driverAccountVehicle": "වාහනය",
+  "driverAccountNoVehicle": "වාහන විස්තර නැත",
+  "driverNotAuthorizedTitle": "රියදුරු ගිණුමක් නොවේ",
+  "driverNotAuthorizedMessage": "මෙම ගිණුම රියදුරෙකු ලෙස ලියාපදිංචි කර නැත. Tugo පාරිභෝගික යෙදුම හරහා රියදුරෙකු වීමට අයදුම් කරන්න, නැතහොත් රියදුරු ගිණුමකින් පිවිසෙන්න.",
 
   "inboxTitle": "එන ලිපි",
   "inboxTabAll": "සියල්ල",

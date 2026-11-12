@@ -107,12 +107,16 @@
   "profileNotifications": "அறிவிப்புகள்",
   "profileHelpSupport": "உதவி மற்றும் ஆதரவு",
   "profileSupportTickets": "உங்கள் ஆதரவு டிக்கெட்டுகள்",
-  "profileSwitchToDriving": "ஓட்டுநராக மாறு",
-  "profileSwitchToDrivingSubtitle": "ஆன்லைனில் சென்று சவாரிகள் மற்றும் டெலிவரிகளை எடுங்கள்",
   "profileSignOut": "வெளியேறு",
   "profileSignOutConfirmTitle": "வெளியேற வேண்டுமா?",
   "profileSignOutConfirmBody": "மீண்டும் உள்நுழைய உங்கள் தொலைபேசி எண் மற்றும் கடவுச்சொல் தேவைப்படும்.",
   "profileStay": "இருக்கவும்",
+
+  "driverAccountTitle": "கணக்கு",
+  "driverAccountVehicle": "வாகனம்",
+  "driverAccountNoVehicle": "வாகன விவரம் இல்லை",
+  "driverNotAuthorizedTitle": "இது ஓட்டுநர் கணக்கு அல்ல",
+  "driverNotAuthorizedMessage": "இந்தக் கணக்கு ஓட்டுநராகப் பதிவு செய்யப்படவில்லை. Tugo வாடிக்கையாளர் ஆப்பில் ஓட்டுநராக விண்ணப்பிக்கவும், அல்லது ஓட்டுநர் கணக்கில் உள்நுழையவும்.",
 
   "inboxTitle": "இன்பாக்ஸ்",
   "inboxTabAll": "அனைத்தும்",

@@ -170,18 +170,6 @@ class ProfileScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            if (user.isDriver) ...[
-              Gap.lg,
-              Card(
-                child: ListTile(
-                  leading: const Icon(Icons.local_taxi_rounded),
-                  title: Text(l10n.profileSwitchToDriving),
-                  subtitle: Text(l10n.profileSwitchToDrivingSubtitle),
-                  trailing: const Icon(Icons.chevron_right_rounded),
-                  onTap: () => context.go('/driver'),
-                ),
-              ),
-            ],
             Gap.xl,
             OutlinedButton.icon(
               onPressed: () => _confirmSignOut(context, ref),

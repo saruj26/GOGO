@@ -32,11 +32,6 @@ class DriverHomeScreen extends ConsumerWidget {
             onPressed: () => context.push('/notifications'),
             icon: const Icon(Icons.notifications_none_rounded),
           ),
-          IconButton(
-            tooltip: 'Passenger app',
-            onPressed: () => context.go('/'),
-            icon: const Icon(Icons.person_outline_rounded),
-          ),
         ],
       ),
       body: profile.when(
@@ -177,7 +172,7 @@ class DriverHomeScreen extends ConsumerWidget {
                     child: _QuickAction(
                       icon: Icons.account_circle_outlined,
                       label: 'Account',
-                      onTap: () => context.go('/profile'),
+                      onTap: () => context.go('/driver/account'),
                     ),
                   ),
                 ],

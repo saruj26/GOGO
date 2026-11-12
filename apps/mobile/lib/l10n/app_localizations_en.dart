@@ -278,13 +278,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSupportTickets => 'Your support tickets';
 
   @override
-  String get profileSwitchToDriving => 'Switch to driving';
-
-  @override
-  String get profileSwitchToDrivingSubtitle =>
-      'Go online and take rides and deliveries';
-
-  @override
   String get profileSignOut => 'Sign out';
 
   @override
@@ -296,6 +289,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileStay => 'Stay';
+
+  @override
+  String get driverAccountTitle => 'Account';
+
+  @override
+  String get driverAccountVehicle => 'Vehicle';
+
+  @override
+  String get driverAccountNoVehicle => 'No vehicle on file';
+
+  @override
+  String get driverNotAuthorizedTitle => 'Not a driver account';
+
+  @override
+  String get driverNotAuthorizedMessage =>
+      'This account isn\'t registered to drive. Apply to drive through the Tugo customer app, or sign in with a driver account.';
 
   @override
   String get inboxTitle => 'Inbox';

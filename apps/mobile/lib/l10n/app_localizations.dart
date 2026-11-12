@@ -592,18 +592,6 @@ abstract class AppLocalizations {
   /// **'Your support tickets'**
   String get profileSupportTickets;
 
-  /// No description provided for @profileSwitchToDriving.
-  ///
-  /// In en, this message translates to:
-  /// **'Switch to driving'**
-  String get profileSwitchToDriving;
-
-  /// No description provided for @profileSwitchToDrivingSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Go online and take rides and deliveries'**
-  String get profileSwitchToDrivingSubtitle;
-
   /// No description provided for @profileSignOut.
   ///
   /// In en, this message translates to:
@@ -627,6 +615,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stay'**
   String get profileStay;
+
+  /// No description provided for @driverAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get driverAccountTitle;
+
+  /// No description provided for @driverAccountVehicle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle'**
+  String get driverAccountVehicle;
+
+  /// No description provided for @driverAccountNoVehicle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vehicle on file'**
+  String get driverAccountNoVehicle;
+
+  /// No description provided for @driverNotAuthorizedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a driver account'**
+  String get driverNotAuthorizedTitle;
+
+  /// No description provided for @driverNotAuthorizedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This account isn\'t registered to drive. Apply to drive through the Tugo customer app, or sign in with a driver account.'**
+  String get driverNotAuthorizedMessage;
 
   /// No description provided for @inboxTitle.
   ///

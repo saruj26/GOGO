@@ -107,12 +107,16 @@
   "profileNotifications": "Notifications",
   "profileHelpSupport": "Help & support",
   "profileSupportTickets": "Your support tickets",
-  "profileSwitchToDriving": "Switch to driving",
-  "profileSwitchToDrivingSubtitle": "Go online and take rides and deliveries",
   "profileSignOut": "Sign out",
   "profileSignOutConfirmTitle": "Sign out?",
   "profileSignOutConfirmBody": "You will need your phone number and password to sign back in.",
   "profileStay": "Stay",
+
+  "driverAccountTitle": "Account",
+  "driverAccountVehicle": "Vehicle",
+  "driverAccountNoVehicle": "No vehicle on file",
+  "driverNotAuthorizedTitle": "Not a driver account",
+  "driverNotAuthorizedMessage": "This account isn't registered to drive. Apply to drive through the Tugo customer app, or sign in with a driver account.",
 
   "inboxTitle": "Inbox",
   "inboxTabAll": "All",

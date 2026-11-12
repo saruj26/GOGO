@@ -4,11 +4,13 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/register_screen.dart';
 import '../../features/auth/sign_in_screen.dart';
+import '../../features/driver/account/driver_account_screen.dart';
 import '../../features/driver/current_ride/driver_ride_screen.dart';
 import '../../features/driver/deliveries/driver_deliveries_screen.dart';
 import '../../features/driver/earnings/driver_earnings_screen.dart';
 import '../../features/driver/history/driver_history_screen.dart';
 import '../../features/driver/home/driver_home_screen.dart';
+import '../../features/driver/onboarding/driver_not_authorized_screen.dart';
 import '../../features/driver/requests/ride_requests_screen.dart';
 import '../../features/driver/shared/shared_requests_screen.dart';
 import '../../features/food/cart_screen.dart';
@@ -40,6 +42,7 @@ import '../../features/tracking/ride_tracking_screen.dart';
 import '../../features/welcome/welcome_screen.dart';
 import '../auth/auth_controller.dart';
 import '../auth/auth_state.dart';
+import '../config/app_flavor.dart';
 import '../widgets/states.dart';
 import 'shells.dart';
 
@@ -55,6 +58,7 @@ final _driverShellKey = GlobalKey<NavigatorState>(debugLabel: 'driver');
 /// role itself, and that check is the one that matters.
 final routerProvider = Provider<GoRouter>((ref) {
   final auth = ValueNotifier<AuthState>(ref.read(authControllerProvider));
+  final flavor = ref.read(appFlavorProvider);
 
   ref.listen<AuthState>(authControllerProvider, (_, next) => auth.value = next);
   ref.onDispose(auth.dispose);
@@ -71,18 +75,28 @@ final routerProvider = Provider<GoRouter>((ref) {
       // returning user to sign-in for a frame and back is worse than waiting.
       if (!session.isResolved) return path == '/starting' ? null : '/starting';
 
-      final onAuthScreen = path == '/welcome' ||
+      final onAuthScreen =
+          path == '/welcome' ||
           path == '/sign-in' ||
           path == '/register' ||
           path.startsWith('/auth/');
 
       if (!session.isAuthenticated) return onAuthScreen ? null : '/welcome';
 
-      if (onAuthScreen || path == '/starting') {
-        return session.isDriver ? '/driver' : '/';
+      // The driver app has no rider shell at all, so a non-driver account
+      // never gets past this screen rather than landing somewhere that has
+      // nothing for them (and whose endpoints the backend would refuse).
+      if (flavor == AppFlavor.driver) {
+        if (onAuthScreen || path == '/starting') {
+          return session.isDriver ? '/driver' : '/driver/not-authorized';
+        }
+        if (path == '/driver/not-authorized') {
+          return session.isDriver ? '/driver' : null;
+        }
+        return session.isDriver ? null : '/driver/not-authorized';
       }
 
-      if (path.startsWith('/driver') && !session.isDriver) return '/';
+      if (onAuthScreen || path == '/starting') return '/';
 
       return null;
     },
@@ -91,9 +105,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/starting',
         builder: (context, state) => const SplashScreen(),
       ),
-      GoRoute(path: '/welcome', builder: (context, state) => const WelcomeScreen()),
-      GoRoute(path: '/sign-in', builder: (context, state) => const SignInScreen()),
-      GoRoute(path: '/register', builder: (context, state) => const RegisterScreen()),
+      GoRoute(
+        path: '/welcome',
+        builder: (context, state) => const WelcomeScreen(),
+      ),
+      GoRoute(
+        path: '/sign-in',
+        builder: (context, state) => const SignInScreen(),
+      ),
+      GoRoute(
+        path: '/register',
+        builder: (context, state) => const RegisterScreen(),
+      ),
 
       // ------------------------------------------- phone + OTP + Google
       GoRoute(
@@ -106,137 +129,24 @@ final routerProvider = Provider<GoRouter>((ref) {
         // `extra` is in-memory only and does not survive a route replay
         // (e.g. the system back button recreating this route without a
         // fresh push), so fall back to phone entry rather than crash.
-        redirect: (context, state) => state.extra is OtpScreenArgs ? null : '/auth/phone',
-        builder: (context, state) => OtpScreen(args: state.extra as OtpScreenArgs),
+        redirect: (context, state) =>
+            state.extra is OtpScreenArgs ? null : '/auth/phone',
+        builder: (context, state) =>
+            OtpScreen(args: state.extra as OtpScreenArgs),
       ),
       GoRoute(
         path: '/auth/name',
-        redirect: (context, state) => state.extra is NameEntryArgs ? null : '/auth/phone',
-        builder: (context, state) => NameEntryScreen(args: state.extra as NameEntryArgs),
+        redirect: (context, state) =>
+            state.extra is NameEntryArgs ? null : '/auth/phone',
+        builder: (context, state) =>
+            NameEntryScreen(args: state.extra as NameEntryArgs),
       ),
 
-      // ---------------------------------------------------------- customer
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, shell) => CustomerShell(shell: shell),
-        branches: [
-          StatefulShellBranch(
-            navigatorKey: _customerShellKey,
-            routes: [
-              GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/book',
-                builder: (context, state) {
-                  // `/book?mode=shared` opens straight into shared riding, so
-                  // the home tile lands on the right thing.
-                  final mode = state.uri.queryParameters['mode'];
-                  if (mode == 'shared') {
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      final container = ProviderScope.containerOf(context, listen: false);
-                      container.read(bookingControllerProvider.notifier).setMode(RideMode.shared);
-                    });
-                  }
-                  return const BookingScreen();
-                },
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/food', builder: (context, state) => const RestaurantsScreen()),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/activity', builder: (context, state) => const ActivityScreen()),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/profile', builder: (context, state) => const ProfileScreen()),
-            ],
-          ),
-        ],
-      ),
-
-      // Full-screen routes, pushed above the customer shell.
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/ride/:rideId',
-        builder: (context, state) =>
-            RideTrackingScreen(rideId: state.pathParameters['rideId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/food/restaurant/:restaurantId',
-        builder: (context, state) =>
-            RestaurantScreen(restaurantId: state.pathParameters['restaurantId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/food/cart/:restaurantId',
-        builder: (context, state) =>
-            CartScreen(restaurantId: state.pathParameters['restaurantId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/food/checkout/:restaurantId',
-        builder: (context, state) =>
-            CheckoutScreen(restaurantId: state.pathParameters['restaurantId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/food/order/:orderId',
-        builder: (context, state) => FoodOrderScreen(orderId: state.pathParameters['orderId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/parcel',
-        builder: (context, state) => const ParcelBookingScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/parcel/:parcelId',
-        builder: (context, state) =>
-            ParcelTrackingScreen(parcelId: state.pathParameters['parcelId']!),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/wallet',
-        builder: (context, state) => const WalletScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/promotions',
-        builder: (context, state) => const PromotionsScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/profile/places',
-        builder: (context, state) => const SavedPlacesScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/profile/safety',
-        builder: (context, state) => const SafetyScreen(),
-      ),
+      // ------------------------------------------------- shared by both apps
       GoRoute(
         parentNavigatorKey: _rootKey,
         path: '/notifications',
         builder: (context, state) => const NotificationsScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/inbox',
-        builder: (context, state) => const InboxScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/profile/edit',
-        builder: (context, state) => const EditProfileScreen(),
       ),
       GoRoute(
         parentNavigatorKey: _rootKey,
@@ -260,60 +170,214 @@ final routerProvider = Provider<GoRouter>((ref) {
             TicketDetailScreen(ticketId: state.pathParameters['ticketId']!),
       ),
 
-      // ------------------------------------------------------------ driver
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, shell) => DriverShell(shell: shell),
-        branches: [
-          StatefulShellBranch(
-            navigatorKey: _driverShellKey,
-            routes: [
-              GoRoute(path: '/driver', builder: (context, state) => const DriverHomeScreen()),
-            ],
+      if (flavor == AppFlavor.customer) ...[
+        // ---------------------------------------------------------- customer
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, shell) => CustomerShell(shell: shell),
+          branches: [
+            StatefulShellBranch(
+              navigatorKey: _customerShellKey,
+              routes: [
+                GoRoute(
+                  path: '/',
+                  builder: (context, state) => const HomeScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/book',
+                  builder: (context, state) {
+                    // `/book?mode=shared` opens straight into shared riding, so
+                    // the home tile lands on the right thing.
+                    final mode = state.uri.queryParameters['mode'];
+                    if (mode == 'shared') {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        final container = ProviderScope.containerOf(
+                          context,
+                          listen: false,
+                        );
+                        container
+                            .read(bookingControllerProvider.notifier)
+                            .setMode(RideMode.shared);
+                      });
+                    }
+                    return const BookingScreen();
+                  },
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/food',
+                  builder: (context, state) => const RestaurantsScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/activity',
+                  builder: (context, state) => const ActivityScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/profile',
+                  builder: (context, state) => const ProfileScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
+
+        // Full-screen routes, pushed above the customer shell.
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/ride/:rideId',
+          builder: (context, state) =>
+              RideTrackingScreen(rideId: state.pathParameters['rideId']!),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/food/restaurant/:restaurantId',
+          builder: (context, state) => RestaurantScreen(
+            restaurantId: state.pathParameters['restaurantId']!,
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/driver/requests',
-                builder: (context, state) => const RideRequestsScreen(),
-              ),
-            ],
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/food/cart/:restaurantId',
+          builder: (context, state) =>
+              CartScreen(restaurantId: state.pathParameters['restaurantId']!),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/food/checkout/:restaurantId',
+          builder: (context, state) => CheckoutScreen(
+            restaurantId: state.pathParameters['restaurantId']!,
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/driver/ride',
-                builder: (context, state) => const DriverRideScreen(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/driver/deliveries',
-                builder: (context, state) => const DriverDeliveriesScreen(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/driver/earnings',
-                builder: (context, state) => const DriverEarningsScreen(),
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/driver/history',
-        builder: (context, state) => const DriverHistoryScreen(),
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootKey,
-        path: '/driver/shared',
-        builder: (context, state) => const SharedRequestsScreen(),
-      ),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/food/order/:orderId',
+          builder: (context, state) =>
+              FoodOrderScreen(orderId: state.pathParameters['orderId']!),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/parcel',
+          builder: (context, state) => const ParcelBookingScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/parcel/:parcelId',
+          builder: (context, state) =>
+              ParcelTrackingScreen(parcelId: state.pathParameters['parcelId']!),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/wallet',
+          builder: (context, state) => const WalletScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/promotions',
+          builder: (context, state) => const PromotionsScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/profile/places',
+          builder: (context, state) => const SavedPlacesScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/profile/safety',
+          builder: (context, state) => const SafetyScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/inbox',
+          builder: (context, state) => const InboxScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/profile/edit',
+          builder: (context, state) => const EditProfileScreen(),
+        ),
+      ] else ...[
+        // ------------------------------------------------------------ driver
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, shell) => DriverShell(shell: shell),
+          branches: [
+            StatefulShellBranch(
+              navigatorKey: _driverShellKey,
+              routes: [
+                GoRoute(
+                  path: '/driver',
+                  builder: (context, state) => const DriverHomeScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/driver/requests',
+                  builder: (context, state) => const RideRequestsScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/driver/ride',
+                  builder: (context, state) => const DriverRideScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/driver/deliveries',
+                  builder: (context, state) => const DriverDeliveriesScreen(),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/driver/earnings',
+                  builder: (context, state) => const DriverEarningsScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/driver/history',
+          builder: (context, state) => const DriverHistoryScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/driver/shared',
+          builder: (context, state) => const SharedRequestsScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/driver/account',
+          builder: (context, state) => const DriverAccountScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootKey,
+          path: '/driver/not-authorized',
+          builder: (context, state) => const DriverNotAuthorizedScreen(),
+        ),
+      ],
     ],
     errorBuilder: (context, state) => Scaffold(
       appBar: AppBar(),

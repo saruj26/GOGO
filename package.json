@@ -24,8 +24,10 @@
     "typecheck": "npm run typecheck -w @rideflow/shared && npm run typecheck -w @rideflow/api && npm run typecheck -w @rideflow/web && npm run typecheck -w @rideflow/admin",
     "mobile:analyze": "cd apps/mobile && flutter analyze",
     "mobile:test": "cd apps/mobile && flutter test",
-    "mobile:build": "cd apps/mobile && flutter build apk --release",
-    "mobile:run": "cd apps/mobile && flutter run",
+    "mobile:build": "cd apps/mobile && flutter build apk --flavor customer -t lib/main.dart --release",
+    "mobile:run": "cd apps/mobile && flutter run --flavor customer -t lib/main.dart",
+    "mobile:driver:build": "cd apps/mobile && flutter build apk --flavor driver -t lib/main_driver.dart --release",
+    "mobile:driver:run": "cd apps/mobile && flutter run --flavor driver -t lib/main_driver.dart",
     "api:e2e": "npm run test:e2e -w @rideflow/api"
   },
   "engines": {

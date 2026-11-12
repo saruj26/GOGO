@@ -274,13 +274,6 @@ class AppLocalizationsTa extends AppLocalizations {
   String get profileSupportTickets => 'உங்கள் ஆதரவு டிக்கெட்டுகள்';
 
   @override
-  String get profileSwitchToDriving => 'ஓட்டுநராக மாறு';
-
-  @override
-  String get profileSwitchToDrivingSubtitle =>
-      'ஆன்லைனில் சென்று சவாரிகள் மற்றும் டெலிவரிகளை எடுங்கள்';
-
-  @override
   String get profileSignOut => 'வெளியேறு';
 
   @override
@@ -292,6 +285,22 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String get profileStay => 'இருக்கவும்';
+
+  @override
+  String get driverAccountTitle => 'கணக்கு';
+
+  @override
+  String get driverAccountVehicle => 'வாகனம்';
+
+  @override
+  String get driverAccountNoVehicle => 'வாகன விவரம் இல்லை';
+
+  @override
+  String get driverNotAuthorizedTitle => 'இது ஓட்டுநர் கணக்கு அல்ல';
+
+  @override
+  String get driverNotAuthorizedMessage =>
+      'இந்தக் கணக்கு ஓட்டுநராகப் பதிவு செய்யப்படவில்லை. Tugo வாடிக்கையாளர் ஆப்பில் ஓட்டுநராக விண்ணப்பிக்கவும், அல்லது ஓட்டுநர் கணக்கில் உள்நுழையவும்.';
 
   @override
   String get inboxTitle => 'இன்பாக்ஸ்';
